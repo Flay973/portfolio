@@ -1662,3 +1662,70 @@ a {
     transform: translateX(4px);
     display: inline-block;
 }
+
+/* ========================================
+   CLICKABLE CARDS & DETAIL LINKS
+   ======================================== */
+.project-card-link {
+    display: block;
+    height: 100%;
+}
+
+.project-detail-link {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: var(--transition);
+}
+
+.project-detail-link i {
+    margin-left: 4px;
+    font-size: 0.7rem;
+}
+
+.project-card:hover .project-detail-link {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.competence-card-link {
+    display: block;
+    cursor: pointer;
+}
+
+.competence-card-link:hover {
+    border-color: var(--accent-gold);
+}
+
+.competence-detail-cta {
+    display: block;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    font-weight: 500;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.competence-detail-cta i {
+    margin-left: 4px;
+    font-size: 0.7rem;
+}
+
+.competence-card-link:hover .competence-detail-cta {
+    opacity: 1;
+}
+
+.competence-details li.maitrise {
+    color: var(--text-primary);
+}
+
+.competence-details li:not(.maitrise) {
+    opacity: 0.5;
+}

@@ -13,7 +13,6 @@
 <body>
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    <!-- Breadcrumb -->
     <div class="breadcrumb visible">
         <div class="breadcrumb-container">
             <a href="index.html"><i class="fas fa-home"></i></a>
@@ -38,7 +36,6 @@
         </div>
     </div>
 
-    <!-- Page Content -->
     <section class="section page-section">
         <div class="container">
             <div class="section-header">
@@ -46,172 +43,11 @@
                 <h2 class="section-title">Projets</h2>
                 <div class="section-line"></div>
             </div>
-
-            <!-- Filtres de projet -->
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="dev">D&eacute;veloppement</button>
-                <button class="filter-btn" data-filter="reseau">R&eacute;seau</button>
-                <button class="filter-btn" data-filter="bdd">Base de donn&eacute;es</button>
-                <!-- AJOUTER UN FILTRE :
-                <button class="filter-btn" data-filter="VOTRE_CATEGORIE">NOM DU FILTRE</button>
-                -->
-            </div>
-
-            <div class="projects-grid">
-                <!--
-                ╔══════════════════════════════════════════════════════════════╗
-                ║  POUR AJOUTER UN NOUVEAU PROJET :                            ║
-                ║  1. Copiez un bloc <div class="project-card">...</div>       ║
-                ║  2. Collez-le dans la grille                                  ║
-                ║  3. Changez data-category="dev" par votre categorie           ║
-                ║     (dev, reseau, bdd, ou autre)                              ║
-                ║  4. Modifiez le titre, la description, le semestre            ║
-                ║  5. Ajoutez vos competences (badges) et technologies          ║
-                ║  6. Changez l'icone (fa-code, fa-network-wired,              ║
-                ║     fa-database, fa-laptop-code, fa-shield-alt, etc.)        ║
-                ╚══════════════════════════════════════════════════════════════╝
-                -->
-
-                <div class="project-card" data-category="dev">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>SA&Eacute; Impl&eacute;mentation</h3>
-                            <span class="project-semester">S1</span>
-                        </div>
-                        <p>Impl&eacute;mentation d'un besoin client &mdash; D&eacute;veloppement d'une application r&eacute;pondant &agrave; un cahier des charges.</p>
-                        <div class="project-competences">
-                            <span class="competence-badge">R&eacute;aliser</span>
-                            <span class="competence-badge">Conduire</span>
-                        </div>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>Git</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="reseau">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>SA&Eacute; Installation Service R&eacute;seau</h3>
-                            <span class="project-semester">S2</span>
-                        </div>
-                        <p>Installation et configuration de services r&eacute;seau. Mise en place de serveurs, routage inter-VLAN et s&eacute;curisation.</p>
-                        <div class="project-competences">
-                            <span class="competence-badge">Administrer</span>
-                            <span class="competence-badge">Collaborer</span>
-                        </div>
-                        <div class="project-tech">
-                            <span>Linux</span>
-                            <span>Cisco</span>
-                            <span>VLAN</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="bdd">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>SA&Eacute; Exploitation BDD</h3>
-                            <span class="project-semester">S2</span>
-                        </div>
-                        <p>Conception et exploitation d'une base de donn&eacute;es relationnelle. Requ&ecirc;tes complexes et visualisation de donn&eacute;es.</p>
-                        <div class="project-competences">
-                            <span class="competence-badge">G&eacute;rer</span>
-                            <span class="competence-badge">Optimiser</span>
-                        </div>
-                        <div class="project-tech">
-                            <span>SQL</span>
-                            <span>Oracle</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="dev">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>SA&Eacute; D&eacute;veloppement Application</h3>
-                            <span class="project-semester">S2</span>
-                        </div>
-                        <p>D&eacute;veloppement d'une application compl&egrave;te avec interface utilisateur, gestion de donn&eacute;es et tests.</p>
-                        <div class="project-competences">
-                            <span class="competence-badge">R&eacute;aliser</span>
-                            <span class="competence-badge">Conduire</span>
-                            <span class="competence-badge">Collaborer</span>
-                        </div>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>HTML/CSS</span>
-                            <span>Git</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- AJOUTER UN NOUVEAU PROJET ICI (copiez le modele ci-dessous) :
-                <div class="project-card" data-category="dev">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="LIEN_VERS_PROJET" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>NOM DU PROJET</h3>
-                            <span class="project-semester">S3</span>
-                        </div>
-                        <p>DESCRIPTION DU PROJET.</p>
-                        <div class="project-competences">
-                            <span class="competence-badge">COMPETENCE 1</span>
-                            <span class="competence-badge">COMPETENCE 2</span>
-                        </div>
-                        <div class="project-tech">
-                            <span>TECH 1</span>
-                            <span>TECH 2</span>
-                        </div>
-                    </div>
-                </div>
-                -->
-            </div>
+            <div class="projects-filter" id="projectsFilter"></div>
+            <div class="projects-grid" id="projectsGrid"></div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -238,6 +74,72 @@
         </div>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = getData();
+            const projets = data.projets;
+
+            // Build filters
+            const categories = [...new Set(projets.map(p => p.categorie))];
+            const catLabels = { dev: 'D\u00E9veloppement', reseau: 'R\u00E9seau', bdd: 'Base de donn\u00E9es', securite: 'S\u00E9curit\u00E9', autre: 'Autre' };
+            
+            let filterHTML = '<button class="filter-btn active" data-filter="all">Tous</button>';
+            categories.forEach(cat => {
+                filterHTML += `<button class="filter-btn" data-filter="${cat}">${catLabels[cat] || cat}</button>`;
+            });
+            document.getElementById('projectsFilter').innerHTML = filterHTML;
+
+            // Build grid
+            document.getElementById('projectsGrid').innerHTML = projets.map(p => `
+                <div class="project-card" data-category="${p.categorie}">
+                    <a href="projet-detail.html?id=${p.id}" class="project-card-link">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <i class="fas ${p.icone}"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>${p.nom}</h3>
+                                <span class="project-semester">${p.semestre}</span>
+                            </div>
+                            <p>${p.description}</p>
+                            <div class="project-competences">
+                                ${(p.competences || []).map(c => `<span class="competence-badge">${c}</span>`).join('')}
+                            </div>
+                            <div class="project-tech">
+                                ${(p.technologies || []).map(t => `<span>${t}</span>`).join('')}
+                            </div>
+                            <span class="project-detail-link">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>
+            `).join('');
+
+            // Init filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.project-card');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.dataset.filter;
+                    cards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                            card.style.display = 'block';
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.95)';
+                            setTimeout(() => card.style.display = 'none', 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

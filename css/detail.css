@@ -1,0 +1,423 @@
+/* ========================================
+   DETAIL PAGES STYLES
+   ======================================== */
+
+.detail-loading, .detail-not-found {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.detail-not-found i {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.detail-not-found h2 {
+    margin-bottom: 20px;
+}
+
+/* Hero */
+.detail-hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.detail-hero-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-md);
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detail-hero-icon.large {
+    width: 88px;
+    height: 88px;
+}
+
+.detail-hero-icon i {
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+}
+
+.detail-hero-icon.large i {
+    font-size: 2.2rem;
+}
+
+.detail-hero-info {
+    flex: 1;
+}
+
+.detail-hero-info h1 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.detail-hero-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.detail-hero-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.badge-gold {
+    background: var(--accent-gradient);
+    color: #0a0a0f;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.badge-outline {
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Stats Row */
+.detail-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.detail-stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+}
+
+.detail-stat-value {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+}
+
+.detail-stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Large progress */
+.detail-progress-large {
+    margin-bottom: 40px;
+}
+
+.detail-progress-large .progress-bar {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.detail-progress-large .progress-fill {
+    height: 100%;
+    transition: width 1s ease;
+}
+
+/* Sections */
+.detail-section {
+    margin-bottom: 40px;
+}
+
+.detail-section h2 {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.detail-section h2 i {
+    color: var(--accent-gold);
+    font-size: 1rem;
+}
+
+.detail-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* Apprentissages detail */
+.apprentissages-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.apprentissage-detail {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+}
+
+.apprentissage-detail.maitrise {
+    background: rgba(201, 168, 76, 0.05);
+    border-color: rgba(201, 168, 76, 0.2);
+}
+
+.apprentissage-detail.non-maitrise {
+    background: var(--bg-card);
+    opacity: 0.7;
+}
+
+.apprentissage-status i {
+    font-size: 1.1rem;
+}
+
+.apprentissage-detail.maitrise .apprentissage-status i {
+    color: var(--accent-gold);
+}
+
+.apprentissage-detail.non-maitrise .apprentissage-status i {
+    color: var(--text-secondary);
+}
+
+.apprentissage-detail span:first-of-type {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.apprentissage-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.apprentissage-detail.maitrise .apprentissage-label {
+    background: rgba(201, 168, 76, 0.15);
+    color: var(--accent-gold);
+}
+
+.apprentissage-detail.non-maitrise .apprentissage-label {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-secondary);
+}
+
+/* Projects linked */
+.detail-projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detail-project-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.detail-project-link:hover {
+    border-color: var(--accent-gold);
+    transform: translateX(4px);
+}
+
+.detail-project-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(201, 168, 76, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detail-project-icon i {
+    color: var(--accent-gold);
+}
+
+.detail-project-link div:nth-child(2) {
+    flex: 1;
+}
+
+.detail-project-link h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.detail-project-link p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.detail-project-link > i.fa-arrow-right {
+    color: var(--accent-gold);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.detail-project-link:hover > i.fa-arrow-right {
+    opacity: 1;
+}
+
+/* Objectives */
+.detail-objectives {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detail-objectives li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.detail-objectives li i {
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+}
+
+/* Tech list */
+.detail-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.detail-tech {
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    color: var(--accent-gold);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Competences grid */
+.detail-competences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.detail-competence-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.detail-competence-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+.detail-competence-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+}
+
+.detail-competence-icon i {
+    color: var(--accent-gold);
+}
+
+.detail-competence-card h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.mini-progress {
+    height: 4px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.mini-progress-text {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+/* Back link */
+.detail-back {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .detail-hero-badges {
+        justify-content: center;
+    }
+    .detail-stats-row {
+        grid-template-columns: 1fr;
+    }
+    .detail-hero-info h1 {
+        font-size: 1.5rem;
+    }
+}

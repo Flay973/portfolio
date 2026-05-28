@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet | Flavio Athanase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">&Agrave; Propos</a></li>
+                <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                <li><a href="projets.html" class="nav-link active">Projets</a></li>
+                <li><a href="competences.html" class="nav-link">Comp&eacute;tences</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="breadcrumb visible">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="projets.html">Projets</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="breadcrumbName">...</span>
+        </div>
+    </div>
+
+    <section class="section page-section">
+        <div class="container">
+            <div id="projetContent">
+                <div class="detail-loading">Chargement...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="apropos.html">&Agrave; Propos</a>
+                    <a href="parcours.html">Parcours</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Comp&eacute;tences</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const data = getData();
+            const projet = data.projets.find(p => p.id === id);
+
+            if (!projet) {
+                document.getElementById('projetContent').innerHTML = `
+                    <div class="detail-not-found">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Projet non trouv\u00E9</h2>
+                        <a href="projets.html" class="btn btn-primary btn-sm">Retour aux projets</a>
+                    </div>`;
+                return;
+            }
+
+            document.title = projet.nom + ' | Flavio Athanase';
+            document.getElementById('breadcrumbName').textContent = projet.nom;
+
+            const compLies = (projet.competences || [])
+                .map(name => data.competences.find(c => c.nom === name))
+                .filter(Boolean);
+
+            document.getElementById('projetContent').innerHTML = `
+                <div class="detail-hero">
+                    <div class="detail-hero-icon large">
+                        <i class="fas ${projet.icone}"></i>
+                    </div>
+                    <div class="detail-hero-info">
+                        <div class="detail-hero-badges">
+                            <span class="badge-gold">${projet.semestre}</span>
+                            <span class="badge-outline">${getCatLabel(projet.categorie)}</span>
+                        </div>
+                        <h1>${projet.nom}</h1>
+                        <p class="detail-hero-subtitle">${projet.description}</p>
+                        ${projet.lien ? `<a href="${projet.lien}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-top:12px;"><i class="fas fa-external-link-alt"></i> Voir le projet</a>` : ''}
+                    </div>
+                </div>
+
+                ${projet.details ? `
+                <div class="detail-section">
+                    <h2><i class="fas fa-info-circle"></i> Pr\u00E9sentation</h2>
+                    <p>${projet.details}</p>
+                </div>` : ''}
+
+                ${(projet.objectifs || []).length ? `
+                <div class="detail-section">
+                    <h2><i class="fas fa-bullseye"></i> Objectifs</h2>
+                    <ul class="detail-objectives">
+                        ${projet.objectifs.map(o => `<li><i class="fas fa-check"></i>${o}</li>`).join('')}
+                    </ul>
+                </div>` : ''}
+
+                <div class="detail-section">
+                    <h2><i class="fas fa-cogs"></i> Technologies utilis\u00E9es</h2>
+                    <div class="detail-tech-list">
+                        ${(projet.technologies || []).map(t => `<span class="detail-tech">${t}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h2><i class="fas fa-chart-bar"></i> Comp\u00E9tences mobilis\u00E9es</h2>
+                    <div class="detail-competences-grid">
+                        ${compLies.map(c => `
+                            <a href="competence-detail.html?id=${c.id}" class="detail-competence-card">
+                                <div class="detail-competence-icon"><i class="fas ${c.icone}"></i></div>
+                                <h4>${c.nom}</h4>
+                                <div class="mini-progress">
+                                    <div class="mini-progress-fill" style="width:${c.progression}%"></div>
+                                </div>
+                                <span class="mini-progress-text">Niveau ${c.niveau} \u2014 ${c.progression}%</span>
+                            </a>
+                        `).join('')}
+                        ${(projet.competences || []).filter(name => !data.competences.find(c => c.nom === name)).map(name => `
+                            <div class="detail-competence-card">
+                                <div class="detail-competence-icon"><i class="fas fa-star"></i></div>
+                                <h4>${name}</h4>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${projet.resultats ? `
+                <div class="detail-section">
+                    <h2><i class="fas fa-trophy"></i> R\u00E9sultats</h2>
+                    <p>${projet.resultats}</p>
+                </div>` : ''}
+
+                <div class="detail-back">
+                    <a href="projets.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+                </div>
+            `;
+        });
+
+        function getCatLabel(cat) {
+            const labels = { dev: 'D\u00E9veloppement', reseau: 'R\u00E9seau', bdd: 'Base de donn\u00E9es', securite: 'S\u00E9curit\u00E9', autre: 'Autre' };
+            return labels[cat] || cat;
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

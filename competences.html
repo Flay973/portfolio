@@ -13,7 +13,6 @@
 <body>
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
@@ -29,7 +28,6 @@
         </div>
     </nav>
 
-    <!-- Breadcrumb -->
     <div class="breadcrumb visible">
         <div class="breadcrumb-container">
             <a href="index.html"><i class="fas fa-home"></i></a>
@@ -38,7 +36,6 @@
         </div>
     </div>
 
-    <!-- Competences -->
     <section class="section page-section section-dark">
         <div class="container">
             <div class="section-header">
@@ -49,153 +46,10 @@
             <p class="competences-intro">
                 Les 6 comp&eacute;tences du BUT Informatique que je d&eacute;veloppe au fil de ma formation, 
                 avec les apprentissages critiques associ&eacute;s et mon niveau de progression.
+                <strong>Cliquez sur une comp&eacute;tence pour voir le d&eacute;tail.</strong>
             </p>
 
-            <!--
-            ╔══════════════════════════════════════════════════════════════╗
-            ║  POUR MODIFIER UNE COMPETENCE :                              ║
-            ║  - Changez data-progress="XX" pour ajuster le % (0-100)     ║
-            ║  - Changez le texte "Niveau X" et "XX%"                      ║
-            ║  - Ajoutez/modifiez les <li> pour les apprentissages         ║
-            ╚══════════════════════════════════════════════════════════════╝
-            -->
-
-            <div class="competences-grid">
-                <div class="competence-card">
-                    <div class="competence-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>R&eacute;aliser</h3>
-                    <p>D&eacute;velopper des applications informatiques simples</p>
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span>Niveau 2</span>
-                            <span>65%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="65"></div>
-                        </div>
-                    </div>
-                    <ul class="competence-details">
-                        <li>Impl&eacute;menter des conceptions simples</li>
-                        <li>&Eacute;laborer des conceptions simples</li>
-                        <li>Faire des essais et &eacute;valuer les r&eacute;sultats</li>
-                        <li>D&eacute;velopper une interface utilisateur</li>
-                    </ul>
-                </div>
-
-                <div class="competence-card">
-                    <div class="competence-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Optimiser</h3>
-                    <p>Appr&eacute;hender et construire des algorithmes</p>
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span>Niveau 2</span>
-                            <span>55%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="55"></div>
-                        </div>
-                    </div>
-                    <ul class="competence-details">
-                        <li>Analyser un probl&egrave;me avec m&eacute;thode</li>
-                        <li>Comparer des algorithmes pour des probl&egrave;mes classiques</li>
-                        <li>Formaliser des outils math&eacute;matiques</li>
-                    </ul>
-                </div>
-
-                <div class="competence-card">
-                    <div class="competence-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Administrer</h3>
-                    <p>Installer, configurer et g&eacute;rer un syst&egrave;me informatique</p>
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span>Niveau 2</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="75"></div>
-                        </div>
-                    </div>
-                    <ul class="competence-details">
-                        <li>Identifier les composants d'un syst&egrave;me num&eacute;rique</li>
-                        <li>Utiliser les fonctionnalit&eacute;s multit&acirc;ches</li>
-                        <li>Installer et configurer un OS</li>
-                        <li>Configurer un poste sur un r&eacute;seau</li>
-                    </ul>
-                </div>
-
-                <div class="competence-card">
-                    <div class="competence-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>G&eacute;rer</h3>
-                    <p>Concevoir et g&eacute;rer des bases de donn&eacute;es</p>
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span>Niveau 2</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="60"></div>
-                        </div>
-                    </div>
-                    <ul class="competence-details">
-                        <li>Interroger une base de donn&eacute;es relationnelle</li>
-                        <li>Visualiser des donn&eacute;es</li>
-                        <li>Concevoir une BDD &agrave; partir d'un cahier des charges</li>
-                    </ul>
-                </div>
-
-                <div class="competence-card">
-                    <div class="competence-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Conduire</h3>
-                    <p>Satisfaire les besoins des utilisateurs</p>
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span>Niveau 2</span>
-                            <span>60%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="60"></div>
-                        </div>
-                    </div>
-                    <ul class="competence-details">
-                        <li>Appr&eacute;hender les besoins du client</li>
-                        <li>Mettre en place les outils de gestion de projet</li>
-                        <li>Identifier les phases d'un cycle de d&eacute;veloppement</li>
-                    </ul>
-                </div>
-
-                <div class="competence-card">
-                    <div class="competence-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Collaborer</h3>
-                    <p>Travailler dans une &eacute;quipe informatique</p>
-                    <div class="progress-container">
-                        <div class="progress-header">
-                            <span>Niveau 2</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-progress="70"></div>
-                        </div>
-                    </div>
-                    <ul class="competence-details">
-                        <li>Appr&eacute;hender l'&eacute;cosyst&egrave;me num&eacute;rique</li>
-                        <li>D&eacute;couvrir les aptitudes des secteurs informatiques</li>
-                        <li>Identifier les r&ocirc;les dans une &eacute;quipe</li>
-                        <li>Acqu&eacute;rir les comp&eacute;tences interpersonnelles</li>
-                    </ul>
-                </div>
-            </div>
+            <div class="competences-grid" id="competencesGrid"></div>
 
             <div class="competences-legend">
                 <h4>L&eacute;gende des niveaux</h4>
@@ -234,9 +88,6 @@
                         <div class="tool-item"><i class="fab fa-html5"></i><span>HTML</span></div>
                         <div class="tool-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
                         <div class="tool-item"><i class="fas fa-database"></i><span>SQL</span></div>
-                        <!-- AJOUTER UN LANGAGE :
-                        <div class="tool-item"><i class="fab fa-python"></i><span>Python</span></div>
-                        -->
                     </div>
                 </div>
                 <div class="tool-category">
@@ -246,9 +97,6 @@
                         <div class="tool-item"><i class="fas fa-network-wired"></i><span>Wireshark</span></div>
                         <div class="tool-item"><i class="fas fa-desktop"></i><span>VMware</span></div>
                         <div class="tool-item"><i class="fas fa-server"></i><span>Apache</span></div>
-                        <!-- AJOUTER UN OUTIL :
-                        <div class="tool-item"><i class="fab fa-docker"></i><span>Docker</span></div>
-                        -->
                     </div>
                 </div>
                 <div class="tool-category">
@@ -258,16 +106,12 @@
                         <div class="tool-item"><i class="fab fa-windows"></i><span>Windows</span></div>
                         <div class="tool-item"><i class="fas fa-shield-alt"></i><span>Active Directory</span></div>
                         <div class="tool-item"><i class="fas fa-project-diagram"></i><span>Cisco</span></div>
-                        <!-- AJOUTER UN SYSTEME :
-                        <div class="tool-item"><i class="fas fa-cloud"></i><span>AWS</span></div>
-                        -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -294,6 +138,43 @@
         </div>
     </footer>
 
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = getData();
+            const grid = document.getElementById('competencesGrid');
+
+            grid.innerHTML = data.competences.map(c => {
+                const maitrises = (c.apprentissages || []).filter(a => a.maitrise).length;
+                const total = (c.apprentissages || []).length;
+
+                return `
+                <a href="competence-detail.html?id=${c.id}" class="competence-card competence-card-link">
+                    <div class="competence-icon"><i class="fas ${c.icone}"></i></div>
+                    <h3>${c.nom}</h3>
+                    <p>${c.description}</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau ${c.niveau}</span>
+                            <span>${c.progression}%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="${c.progression}"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        ${(c.apprentissages || []).map(a => `
+                            <li class="${a.maitrise ? 'maitrise' : ''}">
+                                <i class="fas ${a.maitrise ? 'fa-check' : 'fa-circle'}" style="font-size:0.5rem;margin-right:6px;${a.maitrise ? 'color:var(--accent-gold)' : 'opacity:0.3'}"></i>
+                                ${a.nom}
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <span class="competence-detail-cta">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
+                </a>`;
+            }).join('');
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

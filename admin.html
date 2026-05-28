@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">&Agrave; Propos</a></li>
+                <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                <li><a href="projets.html" class="nav-link">Projets</a></li>
+                <li><a href="competences.html" class="nav-link">Comp&eacute;tences</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb visible">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Administration</span>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <section class="section page-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Panneau de gestion</span>
+                <h2 class="section-title">Administration</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Admin Tabs -->
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="projets"><i class="fas fa-code"></i> Projets</button>
+                <button class="admin-tab" data-tab="parcours"><i class="fas fa-road"></i> Parcours</button>
+                <button class="admin-tab" data-tab="competences"><i class="fas fa-chart-bar"></i> Comp&eacute;tences</button>
+            </div>
+
+            <!-- PROJETS TAB -->
+            <div class="admin-panel" id="panel-projets">
+                <div class="admin-header">
+                    <h3>Mes projets</h3>
+                    <button class="btn btn-primary btn-sm" id="btnAddProjet"><i class="fas fa-plus"></i> Ajouter un projet</button>
+                </div>
+                <div class="admin-list" id="listProjets"></div>
+
+                <!-- Formulaire projet -->
+                <div class="admin-form-overlay" id="formProjet" style="display:none;">
+                    <div class="admin-form-container">
+                        <div class="admin-form-header">
+                            <h3 id="formProjetTitle">Ajouter un projet</h3>
+                            <button class="admin-form-close" id="closeFormProjet"><i class="fas fa-times"></i></button>
+                        </div>
+                        <form id="projetForm">
+                            <input type="hidden" id="projetId" value="">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nom du projet *</label>
+                                    <input type="text" id="projetNom" required placeholder="Ex: SA&Eacute; D&eacute;veloppement Web">
+                                </div>
+                                <div class="form-group">
+                                    <label>Semestre *</label>
+                                    <input type="text" id="projetSemestre" required placeholder="Ex: S3">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Cat&eacute;gorie *</label>
+                                    <select id="projetCategorie" required>
+                                        <option value="dev">D&eacute;veloppement</option>
+                                        <option value="reseau">R&eacute;seau</option>
+                                        <option value="bdd">Base de donn&eacute;es</option>
+                                        <option value="securite">S&eacute;curit&eacute;</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ic&ocirc;ne</label>
+                                    <select id="projetIcone">
+                                        <option value="fa-code">Code &lt;/&gt;</option>
+                                        <option value="fa-network-wired">R&eacute;seau</option>
+                                        <option value="fa-database">Base de donn&eacute;es</option>
+                                        <option value="fa-laptop-code">Laptop</option>
+                                        <option value="fa-shield-alt">S&eacute;curit&eacute;</option>
+                                        <option value="fa-server">Serveur</option>
+                                        <option value="fa-globe">Web</option>
+                                        <option value="fa-mobile-alt">Mobile</option>
+                                        <option value="fa-robot">Robot/IA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description courte *</label>
+                                <textarea id="projetDescription" rows="2" required placeholder="R&eacute;sum&eacute; en une ou deux phrases"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Description d&eacute;taill&eacute;e</label>
+                                <textarea id="projetDetails" rows="4" placeholder="Description compl&egrave;te du projet, contexte, m&eacute;thodologie..."></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Comp&eacute;tences (s&eacute;par&eacute;es par des virgules)</label>
+                                    <input type="text" id="projetCompetences" placeholder="Ex: R&eacute;aliser, Conduire, Collaborer">
+                                </div>
+                                <div class="form-group">
+                                    <label>Technologies (s&eacute;par&eacute;es par des virgules)</label>
+                                    <input type="text" id="projetTechnologies" placeholder="Ex: Java, HTML/CSS, Git">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Lien du projet (optionnel)</label>
+                                <input type="url" id="projetLien" placeholder="https://github.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label>Objectifs (un par ligne)</label>
+                                <textarea id="projetObjectifs" rows="3" placeholder="Analyser le cahier des charges&#10;D&eacute;velopper l'interface&#10;Tester le produit"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>R&eacute;sultats obtenus</label>
+                                <textarea id="projetResultats" rows="2" placeholder="Ce qui a &eacute;t&eacute; accompli, retours re&ccedil;us..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline btn-sm" id="cancelProjet">Annuler</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARCOURS TAB -->
+            <div class="admin-panel" id="panel-parcours" style="display:none;">
+                <div class="admin-header">
+                    <h3>Mon parcours</h3>
+                    <button class="btn btn-primary btn-sm" id="btnAddParcours"><i class="fas fa-plus"></i> Ajouter une exp&eacute;rience</button>
+                </div>
+                <div class="admin-list" id="listParcours"></div>
+
+                <!-- Formulaire parcours -->
+                <div class="admin-form-overlay" id="formParcours" style="display:none;">
+                    <div class="admin-form-container">
+                        <div class="admin-form-header">
+                            <h3 id="formParcoursTitle">Ajouter une exp&eacute;rience</h3>
+                            <button class="admin-form-close" id="closeFormParcours"><i class="fas fa-times"></i></button>
+                        </div>
+                        <form id="parcoursForm">
+                            <input type="hidden" id="parcoursIdx" value="">
+                            <div class="form-group">
+                                <label>Date / P&eacute;riode *</label>
+                                <input type="text" id="parcoursDate" required placeholder="Ex: Depuis Septembre 2025">
+                            </div>
+                            <div class="form-group">
+                                <label>Titre *</label>
+                                <input type="text" id="parcoursTitre" required placeholder="Ex: Alternance D&eacute;veloppeur">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Lieu / Entreprise *</label>
+                                    <input type="text" id="parcoursLieu" required placeholder="Ex: Google France">
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select id="parcoursType">
+                                        <option value="formation">Formation</option>
+                                        <option value="travail">Travail / Stage</option>
+                                        <option value="projet">Projet personnel</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description *</label>
+                                <textarea id="parcoursDescription" rows="3" required placeholder="D&eacute;crivez cette exp&eacute;rience..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Tags (s&eacute;par&eacute;s par des virgules)</label>
+                                <input type="text" id="parcoursTags" placeholder="Ex: Java, Linux, Gestion de projet">
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline btn-sm" id="cancelParcours">Annuler</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPETENCES TAB -->
+            <div class="admin-panel" id="panel-competences" style="display:none;">
+                <div class="admin-header">
+                    <h3>Mes comp&eacute;tences</h3>
+                    <p class="admin-hint">Cliquez sur une comp&eacute;tence pour modifier sa progression et ses apprentissages.</p>
+                </div>
+                <div class="admin-list" id="listCompetences"></div>
+
+                <!-- Formulaire competence -->
+                <div class="admin-form-overlay" id="formCompetence" style="display:none;">
+                    <div class="admin-form-container">
+                        <div class="admin-form-header">
+                            <h3 id="formCompetenceTitle">Modifier la comp&eacute;tence</h3>
+                            <button class="admin-form-close" id="closeFormCompetence"><i class="fas fa-times"></i></button>
+                        </div>
+                        <form id="competenceForm">
+                            <input type="hidden" id="competenceIdx" value="">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Niveau (1-3)</label>
+                                    <select id="competenceNiveau">
+                                        <option value="1">Niveau 1 - Novice</option>
+                                        <option value="2">Niveau 2 - Interm&eacute;diaire</option>
+                                        <option value="3">Niveau 3 - Avanc&eacute;</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Progression (%)</label>
+                                    <input type="range" id="competenceProgression" min="0" max="100" value="50">
+                                    <span class="range-value" id="progressionValue">50%</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description d&eacute;taill&eacute;e</label>
+                                <textarea id="competenceDetails" rows="3" placeholder="D&eacute;taillez votre niveau dans cette comp&eacute;tence..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Apprentissages critiques</label>
+                                <div id="apprentissagesList" class="apprentissages-list"></div>
+                                <div class="add-apprentissage">
+                                    <input type="text" id="newApprentissage" placeholder="Nouvel apprentissage critique">
+                                    <button type="button" class="btn btn-outline btn-xs" id="btnAddApprentissage"><i class="fas fa-plus"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline btn-sm" id="cancelCompetence">Annuler</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions globales -->
+            <div class="admin-global-actions">
+                <button class="btn btn-outline btn-sm" id="btnReset"><i class="fas fa-undo"></i> R&eacute;initialiser les donn&eacute;es</button>
+                <button class="btn btn-outline btn-sm" id="btnExport"><i class="fas fa-download"></i> Exporter (JSON)</button>
+                <button class="btn btn-outline btn-sm" id="btnImport"><i class="fas fa-upload"></i> Importer (JSON)</button>
+                <input type="file" id="importFile" accept=".json" style="display:none;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="apropos.html">&Agrave; Propos</a>
+                    <a href="parcours.html">Parcours</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Comp&eacute;tences</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
