@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&Agrave; Propos | Flavio Athanase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link active">&Agrave; Propos</a></li>
+                <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                <li><a href="projets.html" class="nav-link">Projets</a></li>
+                <li><a href="competences.html" class="nav-link">Comp&eacute;tences</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb visible">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">&Agrave; Propos</span>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <section class="section page-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Qui suis-je</span>
+                <h2 class="section-title">&Agrave; Propos</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <!-- === CARTE DE PRESENTATION === -->
+                <!-- Pour modifier : changez le texte entre les balises <p> -->
+                <div class="about-card about-intro">
+                    <div class="about-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h3>Flavio Athanase</h3>
+                        <p class="about-role">&Eacute;tudiant BUT Informatique &mdash; Parcours DACS</p>
+                        <p>
+                            &Eacute;tudiant en 2&egrave;me ann&eacute;e de BUT Informatique &agrave; l'IUT Lyon 1 (La Doua), 
+                            sp&eacute;cialis&eacute; dans le D&eacute;ploiement d'Applications Communicantes et S&eacute;curis&eacute;es (DACS).
+                            Je suis passionn&eacute; par l'administration syst&egrave;me, la s&eacute;curit&eacute; r&eacute;seau et 
+                            le d&eacute;veloppement d'applications robustes.
+                        </p>
+                        <p>
+                            Mon objectif est de devenir un professionnel polyvalent capable de concevoir, 
+                            d&eacute;ployer et s&eacute;curiser des infrastructures informatiques modernes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- === INFORMATIONS PERSONNELLES === -->
+                <!-- Pour modifier : changez le texte dans <span class="detail-value"> -->
+                <div class="about-details">
+                    <div class="detail-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="detail-label">Localisation</span>
+                            <span class="detail-value">Villeurbanne (69100)</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <span class="detail-label">Formation</span>
+                            <span class="detail-value">BUT Informatique &mdash; IUT Lyon 1</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-code-branch"></i>
+                        <div>
+                            <span class="detail-label">Sp&eacute;cialit&eacute;</span>
+                            <span class="detail-value">DACS (depuis Sept. 2025)</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-language"></i>
+                        <div>
+                            <span class="detail-label">Langues</span>
+                            <span class="detail-value">Fran&ccedil;ais (natif), Anglais (B1), Espagnol (A2)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- === LIENS SOCIAUX === -->
+                <!-- Pour ajouter un lien : copiez un <a class="social-link"> et changez le href et le texte -->
+                <div class="about-links">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Flay973" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:flavio.athanase@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+
+                <!-- === CENTRES D'INTERET === -->
+                <!-- Pour ajouter un interet : copiez un <div class="interest-item"> et changez l'icone et le texte -->
+                <div class="about-interests">
+                    <h4>Centres d'int&eacute;r&ecirc;t</h4>
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <i class="fas fa-book"></i>
+                            <span>Lecture</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-futbol"></i>
+                            <span>Football</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-film"></i>
+                            <span>Cin&eacute;ma</span>
+                        </div>
+                        <!-- AJOUTER UN CENTRE D'INTERET ICI :
+                        <div class="interest-item">
+                            <i class="fas fa-ICONE"></i>
+                            <span>VOTRE INTERET</span>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="apropos.html">&Agrave; Propos</a>
+                    <a href="parcours.html">Parcours</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Comp&eacute;tences</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

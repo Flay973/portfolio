@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comp&eacute;tences | Flavio Athanase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">&Agrave; Propos</a></li>
+                <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                <li><a href="projets.html" class="nav-link">Projets</a></li>
+                <li><a href="competences.html" class="nav-link active">Comp&eacute;tences</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb visible">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Comp&eacute;tences</span>
+        </div>
+    </div>
+
+    <!-- Competences -->
+    <section class="section page-section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">R&eacute;f&eacute;rentiel BUT Informatique</span>
+                <h2 class="section-title">Comp&eacute;tences</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="competences-intro">
+                Les 6 comp&eacute;tences du BUT Informatique que je d&eacute;veloppe au fil de ma formation, 
+                avec les apprentissages critiques associ&eacute;s et mon niveau de progression.
+            </p>
+
+            <!--
+            ╔══════════════════════════════════════════════════════════════╗
+            ║  POUR MODIFIER UNE COMPETENCE :                              ║
+            ║  - Changez data-progress="XX" pour ajuster le % (0-100)     ║
+            ║  - Changez le texte "Niveau X" et "XX%"                      ║
+            ║  - Ajoutez/modifiez les <li> pour les apprentissages         ║
+            ╚══════════════════════════════════════════════════════════════╝
+            -->
+
+            <div class="competences-grid">
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>R&eacute;aliser</h3>
+                    <p>D&eacute;velopper des applications informatiques simples</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="65"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Impl&eacute;menter des conceptions simples</li>
+                        <li>&Eacute;laborer des conceptions simples</li>
+                        <li>Faire des essais et &eacute;valuer les r&eacute;sultats</li>
+                        <li>D&eacute;velopper une interface utilisateur</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Optimiser</h3>
+                    <p>Appr&eacute;hender et construire des algorithmes</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>55%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="55"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Analyser un probl&egrave;me avec m&eacute;thode</li>
+                        <li>Comparer des algorithmes pour des probl&egrave;mes classiques</li>
+                        <li>Formaliser des outils math&eacute;matiques</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Administrer</h3>
+                    <p>Installer, configurer et g&eacute;rer un syst&egrave;me informatique</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="75"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Identifier les composants d'un syst&egrave;me num&eacute;rique</li>
+                        <li>Utiliser les fonctionnalit&eacute;s multit&acirc;ches</li>
+                        <li>Installer et configurer un OS</li>
+                        <li>Configurer un poste sur un r&eacute;seau</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>G&eacute;rer</h3>
+                    <p>Concevoir et g&eacute;rer des bases de donn&eacute;es</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Interroger une base de donn&eacute;es relationnelle</li>
+                        <li>Visualiser des donn&eacute;es</li>
+                        <li>Concevoir une BDD &agrave; partir d'un cahier des charges</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Conduire</h3>
+                    <p>Satisfaire les besoins des utilisateurs</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Appr&eacute;hender les besoins du client</li>
+                        <li>Mettre en place les outils de gestion de projet</li>
+                        <li>Identifier les phases d'un cycle de d&eacute;veloppement</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <div class="competence-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaborer</h3>
+                    <p>Travailler dans une &eacute;quipe informatique</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="70"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Appr&eacute;hender l'&eacute;cosyst&egrave;me num&eacute;rique</li>
+                        <li>D&eacute;couvrir les aptitudes des secteurs informatiques</li>
+                        <li>Identifier les r&ocirc;les dans une &eacute;quipe</li>
+                        <li>Acqu&eacute;rir les comp&eacute;tences interpersonnelles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="competences-legend">
+                <h4>L&eacute;gende des niveaux</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-gradient)"></div>
+                        <span>Niveau 1 : Novice (0-40%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-gradient)"></div>
+                        <span>Niveau 2 : Interm&eacute;diaire (40-70%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-gradient)"></div>
+                        <span>Niveau 3 : Avanc&eacute; (70-100%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outils & Technologies -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Mon arsenal</span>
+                <h2 class="section-title">Outils & Technologies</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h3><i class="fas fa-terminal"></i> Langages</h3>
+                    <div class="tool-items">
+                        <div class="tool-item"><i class="fab fa-java"></i><span>Java</span></div>
+                        <div class="tool-item"><i class="fas fa-copyright"></i><span>C</span></div>
+                        <div class="tool-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+                        <div class="tool-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                        <div class="tool-item"><i class="fas fa-database"></i><span>SQL</span></div>
+                        <!-- AJOUTER UN LANGAGE :
+                        <div class="tool-item"><i class="fab fa-python"></i><span>Python</span></div>
+                        -->
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h3><i class="fas fa-tools"></i> Outils</h3>
+                    <div class="tool-items">
+                        <div class="tool-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                        <div class="tool-item"><i class="fas fa-network-wired"></i><span>Wireshark</span></div>
+                        <div class="tool-item"><i class="fas fa-desktop"></i><span>VMware</span></div>
+                        <div class="tool-item"><i class="fas fa-server"></i><span>Apache</span></div>
+                        <!-- AJOUTER UN OUTIL :
+                        <div class="tool-item"><i class="fab fa-docker"></i><span>Docker</span></div>
+                        -->
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h3><i class="fas fa-laptop"></i> Syst&egrave;mes</h3>
+                    <div class="tool-items">
+                        <div class="tool-item"><i class="fab fa-linux"></i><span>Linux</span></div>
+                        <div class="tool-item"><i class="fab fa-windows"></i><span>Windows</span></div>
+                        <div class="tool-item"><i class="fas fa-shield-alt"></i><span>Active Directory</span></div>
+                        <div class="tool-item"><i class="fas fa-project-diagram"></i><span>Cisco</span></div>
+                        <!-- AJOUTER UN SYSTEME :
+                        <div class="tool-item"><i class="fas fa-cloud"></i><span>AWS</span></div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="apropos.html">&Agrave; Propos</a>
+                    <a href="parcours.html">Parcours</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Comp&eacute;tences</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

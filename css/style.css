@@ -1573,3 +1573,92 @@ a {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ========================================
+   PAGE SECTIONS (multi-page layout)
+   ======================================== */
+.page-section {
+    padding-top: 140px;
+}
+
+/* ========================================
+   QUICK CARDS (Homepage)
+   ======================================== */
+.quick-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.quick-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-card:hover {
+    border-color: var(--border-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-gold);
+}
+
+.quick-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.quick-card:hover::before {
+    opacity: 1;
+}
+
+.quick-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: rgba(201, 168, 76, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.quick-icon i {
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+}
+
+.quick-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+}
+
+.quick-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.quick-arrow {
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.quick-card:hover .quick-arrow {
+    transform: translateX(4px);
+    display: inline-block;
+}

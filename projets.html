@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | Flavio Athanase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">&Agrave; Propos</a></li>
+                <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                <li><a href="projets.html" class="nav-link active">Projets</a></li>
+                <li><a href="competences.html" class="nav-link">Comp&eacute;tences</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb visible">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Projets</span>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <section class="section page-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Mes r&eacute;alisations</span>
+                <h2 class="section-title">Projets</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Filtres de projet -->
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="dev">D&eacute;veloppement</button>
+                <button class="filter-btn" data-filter="reseau">R&eacute;seau</button>
+                <button class="filter-btn" data-filter="bdd">Base de donn&eacute;es</button>
+                <!-- AJOUTER UN FILTRE :
+                <button class="filter-btn" data-filter="VOTRE_CATEGORIE">NOM DU FILTRE</button>
+                -->
+            </div>
+
+            <div class="projects-grid">
+                <!--
+                ╔══════════════════════════════════════════════════════════════╗
+                ║  POUR AJOUTER UN NOUVEAU PROJET :                            ║
+                ║  1. Copiez un bloc <div class="project-card">...</div>       ║
+                ║  2. Collez-le dans la grille                                  ║
+                ║  3. Changez data-category="dev" par votre categorie           ║
+                ║     (dev, reseau, bdd, ou autre)                              ║
+                ║  4. Modifiez le titre, la description, le semestre            ║
+                ║  5. Ajoutez vos competences (badges) et technologies          ║
+                ║  6. Changez l'icone (fa-code, fa-network-wired,              ║
+                ║     fa-database, fa-laptop-code, fa-shield-alt, etc.)        ║
+                ╚══════════════════════════════════════════════════════════════╝
+                -->
+
+                <div class="project-card" data-category="dev">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; Impl&eacute;mentation</h3>
+                            <span class="project-semester">S1</span>
+                        </div>
+                        <p>Impl&eacute;mentation d'un besoin client &mdash; D&eacute;veloppement d'une application r&eacute;pondant &agrave; un cahier des charges.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">R&eacute;aliser</span>
+                            <span class="competence-badge">Conduire</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="reseau">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; Installation Service R&eacute;seau</h3>
+                            <span class="project-semester">S2</span>
+                        </div>
+                        <p>Installation et configuration de services r&eacute;seau. Mise en place de serveurs, routage inter-VLAN et s&eacute;curisation.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">Administrer</span>
+                            <span class="competence-badge">Collaborer</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Linux</span>
+                            <span>Cisco</span>
+                            <span>VLAN</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="bdd">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; Exploitation BDD</h3>
+                            <span class="project-semester">S2</span>
+                        </div>
+                        <p>Conception et exploitation d'une base de donn&eacute;es relationnelle. Requ&ecirc;tes complexes et visualisation de donn&eacute;es.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">G&eacute;rer</span>
+                            <span class="competence-badge">Optimiser</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>SQL</span>
+                            <span>Oracle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="dev">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; D&eacute;veloppement Application</h3>
+                            <span class="project-semester">S2</span>
+                        </div>
+                        <p>D&eacute;veloppement d'une application compl&egrave;te avec interface utilisateur, gestion de donn&eacute;es et tests.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">R&eacute;aliser</span>
+                            <span class="competence-badge">Conduire</span>
+                            <span class="competence-badge">Collaborer</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>HTML/CSS</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AJOUTER UN NOUVEAU PROJET ICI (copiez le modele ci-dessous) :
+                <div class="project-card" data-category="dev">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="LIEN_VERS_PROJET" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>NOM DU PROJET</h3>
+                            <span class="project-semester">S3</span>
+                        </div>
+                        <p>DESCRIPTION DU PROJET.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">COMPETENCE 1</span>
+                            <span class="competence-badge">COMPETENCE 2</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>TECH 1</span>
+                            <span>TECH 2</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="apropos.html">&Agrave; Propos</a>
+                    <a href="parcours.html">Parcours</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Comp&eacute;tences</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
