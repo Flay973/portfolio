@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavio Athanase | Portfolio BUT Informatique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Cursor glow effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#accueil" class="nav-logo">
+                <span class="logo-text">FA</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#accueil" class="nav-link active">Accueil</a></li>
+                <li><a href="#apropos" class="nav-link">A Propos</a></li>
+                <li><a href="#parcours" class="nav-link">Parcours</a></li>
+                <li><a href="#projets" class="nav-link">Projets</a></li>
+                <li><a href="#competences" class="nav-link">Comp&eacute;tences</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb" id="breadcrumb">
+        <div class="breadcrumb-container">
+            <a href="#accueil"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="breadcrumbCurrent">Accueil</span>
+        </div>
+    </div>
+
+    <!-- Hero / Accueil -->
+    <section id="accueil" class="hero-section">
+        <div class="hero-bg-effects">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Disponible pour une alternance
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-greeting">Bonjour, je suis</span>
+                <span class="hero-name">Flavio Athanase</span>
+                <span class="hero-subtitle">&Eacute;tudiant en BUT Informatique</span>
+            </h1>
+            <p class="hero-description">
+                Passionn&eacute; par les syst&egrave;mes et r&eacute;seaux, je construis des solutions robustes et s&eacute;curis&eacute;es. 
+                Actuellement en 2&egrave;me ann&eacute;e &agrave; l'IUT Lyon 1, sp&eacute;cialit&eacute; DACS.
+            </p>
+            <div class="hero-cta">
+                <a href="#projets" class="btn btn-primary">
+                    <span>Voir mes projets</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span>Me contacter</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="6">0</span>
+                    <span class="stat-label">Comp&eacute;tences</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="4">0</span>
+                    <span class="stat-label">Projets</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2">0</span>
+                    <span class="stat-label">Ann&eacute;es de formation</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- A Propos -->
+    <section id="apropos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Qui suis-je</span>
+                <h2 class="section-title">&Agrave; Propos</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card about-intro">
+                    <div class="about-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <h3>Flavio Athanase</h3>
+                        <p class="about-role">&Eacute;tudiant BUT Informatique &mdash; Parcours DACS</p>
+                        <p>
+                            &Eacute;tudiant en 2&egrave;me ann&eacute;e de BUT Informatique &agrave; l'IUT Lyon 1 (La Doua), 
+                            sp&eacute;cialis&eacute; dans le D&eacute;ploiement d'Applications Communicantes et S&eacute;curis&eacute;es (DACS).
+                            Je suis passionn&eacute; par l'administration syst&egrave;me, la s&eacute;curit&eacute; r&eacute;seau et 
+                            le d&eacute;veloppement d'applications robustes.
+                        </p>
+                        <p>
+                            Mon objectif est de devenir un professionnel polyvalent capable de concevoir, 
+                            d&eacute;ployer et s&eacute;curiser des infrastructures informatiques modernes.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-details">
+                    <div class="detail-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="detail-label">Localisation</span>
+                            <span class="detail-value">Villeurbanne (69100)</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <span class="detail-label">Formation</span>
+                            <span class="detail-value">BUT Informatique &mdash; IUT Lyon 1</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-code-branch"></i>
+                        <div>
+                            <span class="detail-label">Sp&eacute;cialit&eacute;</span>
+                            <span class="detail-value">DACS (depuis Sept. 2025)</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fas fa-language"></i>
+                        <div>
+                            <span class="detail-label">Langues</span>
+                            <span class="detail-value">Fran&ccedil;ais (natif), Anglais (B1), Espagnol (A2)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-links">
+                    <a href="https://linkedin.com/in/" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Flay973" class="social-link" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="mailto:flavio.athanase@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+                <div class="about-interests">
+                    <h4>Centres d'int&eacute;r&ecirc;t</h4>
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <i class="fas fa-book"></i>
+                            <span>Lecture</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-futbol"></i>
+                            <span>Football</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-film"></i>
+                            <span>Cin&eacute;ma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parcours -->
+    <section id="parcours" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Mon histoire</span>
+                <h2 class="section-title">Parcours</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Depuis Septembre 2025</div>
+                        <h3>BUT Informatique &mdash; Parcours DACS</h3>
+                        <p class="timeline-location"><i class="fas fa-university"></i> IUT Lyon 1 &mdash; La Doua</p>
+                        <p>Sp&eacute;cialisation en D&eacute;ploiement d'Applications Communicantes et S&eacute;curis&eacute;es. 
+                        Approfondissement en administration syst&egrave;me, s&eacute;curit&eacute; r&eacute;seau et d&eacute;ploiement d'applications.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">S&eacute;curit&eacute;</span>
+                            <span class="tag">R&eacute;seau</span>
+                            <span class="tag">D&eacute;ploiement</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Septembre 2024 &mdash; Juin 2025</div>
+                        <h3>BUT Informatique &mdash; 1&egrave;re ann&eacute;e</h3>
+                        <p class="timeline-location"><i class="fas fa-university"></i> IUT Lyon 1 &mdash; La Doua</p>
+                        <p>Formation g&eacute;n&eacute;raliste en informatique : d&eacute;veloppement, bases de donn&eacute;es, 
+                        syst&egrave;mes, r&eacute;seaux et gestion de projet.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Gestion de projet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Juillet &mdash; Ao&ucirc;t 2024</div>
+                        <h3>Technicien Support</h3>
+                        <p class="timeline-location"><i class="fas fa-building"></i> Collectivit&eacute; Territoriale de Guyane</p>
+                        <p>Installation de logiciels, maintenance des &eacute;quipements informatiques, 
+                        mise &agrave; niveau du parc informatique.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Support</span>
+                            <span class="tag">Maintenance</span>
+                            <span class="tag">Parc informatique</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 &mdash; 2024</div>
+                        <h3>BAC STI2D</h3>
+                        <p class="timeline-location"><i class="fas fa-school"></i> Lyc&eacute;e J-M Carriat</p>
+                        <p>Baccalaur&eacute;at Sciences et Technologies de l'Industrie et du D&eacute;veloppement Durable. 
+                        D&eacute;couverte des technologies num&eacute;riques et industrielles.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">STI2D</span>
+                            <span class="tag">Technologie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-add">
+                <p class="timeline-note"><i class="fas fa-info-circle"></i> Ce parcours est mis &agrave; jour r&eacute;guli&egrave;rement avec mes nouvelles exp&eacute;riences.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+    <section id="projets" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Mes r&eacute;alisations</span>
+                <h2 class="section-title">Projets</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="dev">D&eacute;veloppement</button>
+                <button class="filter-btn" data-filter="reseau">R&eacute;seau</button>
+                <button class="filter-btn" data-filter="bdd">Base de donn&eacute;es</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="dev">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; Impl&eacute;mentation</h3>
+                            <span class="project-semester">S1</span>
+                        </div>
+                        <p>Impl&eacute;mentation d'un besoin client &mdash; D&eacute;veloppement d'une application r&eacute;pondant &agrave; un cahier des charges.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">R&eacute;aliser</span>
+                            <span class="competence-badge">Conduire</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="reseau">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; Installation Service R&eacute;seau</h3>
+                            <span class="project-semester">S2</span>
+                        </div>
+                        <p>Installation et configuration de services r&eacute;seau. Mise en place de serveurs, routage inter-VLAN et s&eacute;curisation.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">Administrer</span>
+                            <span class="competence-badge">Collaborer</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Linux</span>
+                            <span>Cisco</span>
+                            <span>VLAN</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="bdd">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; Exploitation BDD</h3>
+                            <span class="project-semester">S2</span>
+                        </div>
+                        <p>Conception et exploitation d'une base de donn&eacute;es relationnelle. Requ&ecirc;tes complexes et visualisation de donn&eacute;es.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">G&eacute;rer</span>
+                            <span class="competence-badge">Optimiser</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>SQL</span>
+                            <span>Oracle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="dev">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <h3>SA&Eacute; D&eacute;veloppement Application</h3>
+                            <span class="project-semester">S2</span>
+                        </div>
+                        <p>D&eacute;veloppement d'une application compl&egrave;te avec interface utilisateur, gestion de donn&eacute;es et tests.</p>
+                        <div class="project-competences">
+                            <span class="competence-badge">R&eacute;aliser</span>
+                            <span class="competence-badge">Conduire</span>
+                            <span class="competence-badge">Collaborer</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>HTML/CSS</span>
+                            <span>Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comp&eacute;tences -->
+    <section id="competences" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">R&eacute;f&eacute;rentiel BUT Informatique</span>
+                <h2 class="section-title">Comp&eacute;tences</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="competences-intro">
+                Les 6 comp&eacute;tences du BUT Informatique que je d&eacute;veloppe au fil de ma formation, 
+                avec les apprentissages critiques associ&eacute;s et mon niveau de progression.
+            </p>
+            <div class="competences-grid">
+                <div class="competence-card" data-aos="fade-up">
+                    <div class="competence-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>R&eacute;aliser</h3>
+                    <p>D&eacute;velopper des applications informatiques simples</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="65"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Impl&eacute;menter des conceptions simples</li>
+                        <li>&Eacute;laborer des conceptions simples</li>
+                        <li>Faire des essais et &eacute;valuer les r&eacute;sultats</li>
+                        <li>D&eacute;velopper une interface utilisateur</li>
+                    </ul>
+                </div>
+                <div class="competence-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="competence-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Optimiser</h3>
+                    <p>Appr&eacute;hender et construire des algorithmes</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>55%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="55"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Analyser un probl&egrave;me avec m&eacute;thode</li>
+                        <li>Comparer des algorithmes pour des probl&egrave;mes classiques</li>
+                        <li>Formaliser des outils math&eacute;matiques</li>
+                    </ul>
+                </div>
+                <div class="competence-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="competence-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Administrer</h3>
+                    <p>Installer, configurer et g&eacute;rer un syst&egrave;me informatique</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="75"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Identifier les composants d'un syst&egrave;me num&eacute;rique</li>
+                        <li>Utiliser les fonctionnalit&eacute;s multit&acirc;ches</li>
+                        <li>Installer et configurer un OS</li>
+                        <li>Configurer un poste sur un r&eacute;seau</li>
+                    </ul>
+                </div>
+                <div class="competence-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="competence-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>G&eacute;rer</h3>
+                    <p>Concevoir et g&eacute;rer des bases de donn&eacute;es</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Interroger une base de donn&eacute;es relationnelle</li>
+                        <li>Visualiser des donn&eacute;es</li>
+                        <li>Concevoir une BDD &agrave; partir d'un cahier des charges</li>
+                    </ul>
+                </div>
+                <div class="competence-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="competence-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Conduire</h3>
+                    <p>Satisfaire les besoins des utilisateurs</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Appr&eacute;hender les besoins du client</li>
+                        <li>Mettre en place les outils de gestion de projet</li>
+                        <li>Identifier les phases d'un cycle de d&eacute;veloppement</li>
+                    </ul>
+                </div>
+                <div class="competence-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="competence-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Collaborer</h3>
+                    <p>Travailler dans une &eacute;quipe informatique</p>
+                    <div class="progress-container">
+                        <div class="progress-header">
+                            <span>Niveau 2</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="70"></div>
+                        </div>
+                    </div>
+                    <ul class="competence-details">
+                        <li>Appr&eacute;hender l'&eacute;cosyst&egrave;me num&eacute;rique</li>
+                        <li>D&eacute;couvrir les aptitudes des secteurs informatiques</li>
+                        <li>Identifier les r&ocirc;les dans une &eacute;quipe</li>
+                        <li>Acqu&eacute;rir les comp&eacute;tences interpersonnelles</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="competences-legend">
+                <h4>L&eacute;gende des niveaux</h4>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-gradient)"></div>
+                        <span>Niveau 1 : Novice (0-40%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-gradient)"></div>
+                        <span>Niveau 2 : Interm&eacute;diaire (40-70%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: var(--accent-gradient)"></div>
+                        <span>Niveau 3 : Avanc&eacute; (70-100%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outils & Technologies -->
+    <section id="outils" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Mon arsenal</span>
+                <h2 class="section-title">Outils & Technologies</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h3><i class="fas fa-terminal"></i> Langages</h3>
+                    <div class="tool-items">
+                        <div class="tool-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-copyright"></i>
+                            <span>C</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h3><i class="fas fa-tools"></i> Outils</h3>
+                    <div class="tool-items">
+                        <div class="tool-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Wireshark</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-desktop"></i>
+                            <span>VMware</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-server"></i>
+                            <span>Apache</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-category">
+                    <h3><i class="fas fa-laptop"></i> Syst&egrave;mes</h3>
+                    <div class="tool-items">
+                        <div class="tool-item">
+                            <i class="fab fa-linux"></i>
+                            <span>Linux</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Active Directory</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Cisco</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Restons en contact</span>
+                <h2 class="section-title">Contact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Envie de collaborer ?</h3>
+                    <p>Je suis actuellement &agrave; la recherche d'une alternance en syst&egrave;me et r&eacute;seau. 
+                    N'h&eacute;sitez pas &agrave; me contacter pour toute opportunit&eacute; ou &eacute;change.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:flavio.athanase@gmail.com">flavio.athanase@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>06 22 82 95 78</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>69100 Villeurbanne</span>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="https://linkedin.com/in/" class="contact-social" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Flay973" class="contact-social" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Votre nom" required>
+                        <label for="name">Nom</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Votre email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Sujet">
+                        <label for="subject">Sujet</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Votre message" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Envoyer</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#accueil">Accueil</a>
+                    <a href="#apropos">&Agrave; Propos</a>
+                    <a href="#parcours">Parcours</a>
+                    <a href="#projets">Projets</a>
+                    <a href="#competences">Comp&eacute;tences</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://linkedin.com/in/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
