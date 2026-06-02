@@ -153,14 +153,23 @@
                 </a>`;
             }).join('');
 
-            /* --- Outils grid (logo + name only) --- */
+            /* --- Outils grid (grouped by category) --- */
             const outils = data.outils || [];
+            const categories = [...new Set(outils.map(o => o.categorie))];
+            const catIcons = { 'Langages': 'fa-terminal', 'Outils': 'fa-tools', 'Systèmes': 'fa-laptop' };
             const outilsGrid = document.getElementById('outilsGrid');
 
-            outilsGrid.innerHTML = outils.map(o => `
-                <div class="outil-mini-card" data-outil-id="${o.id}">
-                    <i class="${o.icone}"></i>
-                    <span>${o.nom}</span>
+            outilsGrid.innerHTML = categories.map(cat => `
+                <div class="outils-category">
+                    <h3 class="outils-category-title"><i class="fas ${catIcons[cat] || 'fa-cog'}"></i> ${cat}</h3>
+                    <div class="outils-category-grid">
+                        ${outils.filter(o => o.categorie === cat).map(o => `
+                            <div class="outil-mini-card" data-outil-id="${o.id}">
+                                <i class="${o.icone}"></i>
+                                <span>${o.nom}</span>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
             `).join('');
 

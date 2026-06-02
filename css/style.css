@@ -2191,13 +2191,32 @@ a {
     }
 }
 
-/* Outils - minimal style (logo + name only) */
+/* Outils - minimal style (logo + name only, grouped by category) */
 .outils-minimal-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.outils-category {
+    margin-bottom: 32px;
+}
+
+.outils-category-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--accent-gold);
+}
+
+.outils-category-title i {
+    margin-right: 8px;
+    font-size: 0.95rem;
+}
+
+.outils-category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     gap: 16px;
-    max-width: 600px;
-    margin: 0 auto;
 }
 
 .outil-mini-card {
