@@ -1722,6 +1722,16 @@ a {
     opacity: 1;
 }
 
+.competence-details .see-more {
+    color: var(--accent-gold);
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-style: italic;
+    opacity: 0.8;
+    list-style: none;
+    margin-top: 4px;
+}
+
 .competence-details li.maitrise {
     color: var(--text-primary);
 }
@@ -2050,4 +2060,173 @@ a {
 .competence-usage-badge.avance {
     background: rgba(74, 222, 128, 0.15);
     color: #4ade80;
+}
+
+/* ========================================
+   THEME CARDS GRID (projets landing)
+   ======================================== */
+.theme-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.theme-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.theme-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 48px 32px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.theme-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(201, 168, 76, 0.1);
+}
+
+.theme-card:hover::before {
+    opacity: 1;
+}
+
+.theme-card-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-card-icon i {
+    font-size: 2rem;
+    color: var(--accent-gold);
+}
+
+.theme-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.theme-card p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.theme-card-count {
+    display: inline-block;
+    background: rgba(201, 168, 76, 0.12);
+    color: var(--accent-gold);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.theme-card-cta {
+    display: block;
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: all 0.3s ease;
+}
+
+.theme-card:hover .theme-card-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.theme-card-cta i {
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+}
+
+.theme-card:hover .theme-card-cta i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .theme-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .theme-card {
+        padding: 32px 24px;
+    }
+    .theme-card-cta {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Outils - minimal style (logo + name only) */
+.outils-minimal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.outil-mini-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.outil-mini-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(201, 168, 76, 0.08);
+}
+
+.outil-mini-card i {
+    font-size: 2rem;
+    color: var(--accent-gold);
+}
+
+.outil-mini-card span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-primary);
 }

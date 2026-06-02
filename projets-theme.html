@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | Flavio Athanase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">&Agrave; Propos</a></li>
+                <li><a href="parcours.html" class="nav-link">Parcours</a></li>
+                <li><a href="projets.html" class="nav-link active">Projets</a></li>
+                <li><a href="competences.html" class="nav-link">Comp&eacute;tences</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="breadcrumb visible">
+        <div class="breadcrumb-container">
+            <a href="index.html"><i class="fas fa-home"></i></a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="projets.html">Projets</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current" id="breadcrumbTheme"></span>
+        </div>
+    </div>
+
+    <section class="section page-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" id="themeTag"></span>
+                <h2 class="section-title" id="themeTitle"></h2>
+                <div class="section-line"></div>
+            </div>
+            <div id="projetsContent"></div>
+            <div style="text-align:center;margin-top:40px;">
+                <a href="projets.html" class="btn btn-outline"><i class="fas fa-arrow-left" style="margin-right:8px;"></i>Retour aux cat&eacute;gories</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">FA</span>
+                    <p>Portfolio BUT Informatique &mdash; 2&egrave;me ann&eacute;e</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Accueil</a>
+                    <a href="apropos.html">&Agrave; Propos</a>
+                    <a href="parcours.html">Parcours</a>
+                    <a href="projets.html">Projets</a>
+                    <a href="competences.html">Comp&eacute;tences</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/flavio-athanase-605983305/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Flay973" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Flavio Athanase. Tous droits r&eacute;serv&eacute;s.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const themeId = params.get('theme');
+            const data = getData();
+
+            const themesInfo = {
+                scolaire: { label: 'Scolaire', icon: 'fa-graduation-cap', tag: 'Formation', description: 'Projets r\u00E9alis\u00E9s dans le cadre de ma formation' },
+                alternance: { label: 'Alternance', icon: 'fa-building', tag: 'Entreprise', description: 'Projets r\u00E9alis\u00E9s en entreprise' },
+                stage: { label: 'Stage', icon: 'fa-briefcase', tag: 'Stage', description: 'Missions effectu\u00E9es lors de mes stages' }
+            };
+
+            const theme = themesInfo[themeId];
+            if (!theme) {
+                document.getElementById('projetsContent').innerHTML = '<div class="detail-not-found"><i class="fas fa-exclamation-triangle"></i><h2>Cat\u00E9gorie introuvable</h2><a href="projets.html" class="btn btn-primary">Retour aux projets</a></div>';
+                return;
+            }
+
+            document.title = theme.label + ' | Projets | Flavio Athanase';
+            document.getElementById('breadcrumbTheme').textContent = theme.label;
+            document.getElementById('themeTag').textContent = theme.tag;
+            document.getElementById('themeTitle').textContent = 'Projets ' + theme.label;
+
+            const projets = data.projets.filter(p => p.theme === themeId);
+            const container = document.getElementById('projetsContent');
+
+            if (!projets.length) {
+                container.innerHTML = '<div class="theme-empty" style="padding:60px 20px;"><i class="fas fa-folder-open"></i><p>Aucun projet dans cette cat\u00E9gorie pour le moment.</p></div>';
+                return;
+            }
+
+            container.innerHTML = `<div class="projects-grid">${projets.map(p => {
+                const compBadges = (p.competencesUtilisees || []).map(cu => {
+                    const comp = getCompetenceById(data, cu.competenceId);
+                    return comp ? '<span class="competence-badge" title="' + cu.niveau + '">' + comp.nom + '</span>' : '';
+                }).join('');
+
+                return `
+                <div class="project-card">
+                    <a href="projet-detail.html?id=${p.id}" class="project-card-link">
+                        <div class="project-image">
+                            <div class="project-placeholder"><i class="fas ${p.icone}"></i></div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h3>${p.nom}</h3>
+                                <span class="project-semester">${p.semestre}</span>
+                            </div>
+                            <p>${p.description}</p>
+                            <div class="project-competences">${compBadges}</div>
+                            <div class="project-tech">
+                                ${(p.technologies || []).map(t => '<span>' + t + '</span>').join('')}
+                            </div>
+                            <span class="project-detail-link">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                </div>`;
+            }).join('')}</div>`;
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>

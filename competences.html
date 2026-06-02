@@ -36,7 +36,6 @@
         </div>
     </div>
 
-    <!-- Comp&eacute;tences BUT -->
     <section class="section page-section section-dark">
         <div class="container">
             <div class="section-header">
@@ -45,9 +44,8 @@
                 <div class="section-line"></div>
             </div>
             <p class="competences-intro">
-                Les 6 comp&eacute;tences du BUT Informatique que je d&eacute;veloppe au fil de ma formation, 
-                avec les apprentissages critiques associ&eacute;s et mon niveau de progression.
-                <strong>Cliquez sur une comp&eacute;tence pour voir le d&eacute;tail.</strong>
+                Les 6 comp&eacute;tences du BUT Informatique que je d&eacute;veloppe au fil de ma formation.
+                <strong>Cliquez sur une comp&eacute;tence pour voir tous les apprentissages.</strong>
             </p>
             <div class="competences-grid" id="competencesGrid"></div>
             <div class="competences-legend">
@@ -70,7 +68,6 @@
         </div>
     </section>
 
-    <!-- Outils & Technologies -->
     <section class="section">
         <div class="container">
             <div class="section-header">
@@ -78,12 +75,11 @@
                 <h2 class="section-title">Outils & Technologies</h2>
                 <div class="section-line"></div>
             </div>
-            <p class="competences-intro">Cliquez sur un outil pour voir mon niveau de ma&icirc;trise et les d&eacute;tails.</p>
-            <div id="outilsGrid"></div>
+            <p class="competences-intro">Cliquez sur un outil pour voir mon niveau de ma&icirc;trise.</p>
+            <div class="outils-minimal-grid" id="outilsGrid"></div>
         </div>
     </section>
 
-    <!-- Outil detail overlay -->
     <div id="outilOverlay" class="outil-detail-overlay" style="display:none;">
         <div class="outil-detail-card">
             <button class="outil-detail-close" id="outilClose"><i class="fas fa-times"></i></button>
@@ -121,10 +117,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const data = getData();
+            const MAX_VISIBLE = 5;
 
-            /* --- Competences grid --- */
+            /* --- Competences grid (5 apprentissages max visible) --- */
             const grid = document.getElementById('competencesGrid');
             grid.innerHTML = data.competences.map(c => {
+                const apprentissages = c.apprentissages || [];
+                const visible = apprentissages.slice(0, MAX_VISIBLE);
+                const remaining = apprentissages.length - MAX_VISIBLE;
+
                 return `
                 <a href="competence-detail.html?id=${c.id}" class="competence-card competence-card-link">
                     <div class="competence-icon"><i class="fas ${c.icone}"></i></div>
@@ -140,45 +141,34 @@
                         </div>
                     </div>
                     <ul class="competence-details">
-                        ${(c.apprentissages || []).map(a => `
+                        ${visible.map(a => `
                             <li class="${a.maitrise ? 'maitrise' : ''}">
                                 <i class="fas ${a.maitrise ? 'fa-check' : 'fa-circle'}" style="font-size:0.5rem;margin-right:6px;${a.maitrise ? 'color:var(--accent-gold)' : 'opacity:0.3'}"></i>
                                 ${a.nom}
                             </li>
                         `).join('')}
+                        ${remaining > 0 ? `<li class="see-more">+ ${remaining} autres apprentissages...</li>` : ''}
                     </ul>
                     <span class="competence-detail-cta">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
                 </a>`;
             }).join('');
 
-            /* --- Outils grid --- */
+            /* --- Outils grid (logo + name only) --- */
             const outils = data.outils || [];
-            const categories = [...new Set(outils.map(o => o.categorie))];
             const outilsGrid = document.getElementById('outilsGrid');
 
-            outilsGrid.innerHTML = `<div class="tools-grid">${categories.map(cat => `
-                <div class="tool-category">
-                    <h3><i class="fas ${cat === 'Langages' ? 'fa-terminal' : cat === 'Outils' ? 'fa-tools' : 'fa-laptop'}"></i> ${cat}</h3>
-                    <div class="tool-items">
-                        ${outils.filter(o => o.categorie === cat).map(o => `
-                            <div class="outil-card" data-outil-id="${o.id}">
-                                <i class="${o.icone}"></i>
-                                <span>${o.nom}</span>
-                                <div class="outil-niveau-mini">
-                                    <div class="outil-niveau-bar"><div class="outil-niveau-fill" style="width:${o.niveau}%"></div></div>
-                                    <span class="outil-niveau-text">${o.niveau}%</span>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
+            outilsGrid.innerHTML = outils.map(o => `
+                <div class="outil-mini-card" data-outil-id="${o.id}">
+                    <i class="${o.icone}"></i>
+                    <span>${o.nom}</span>
                 </div>
-            `).join('')}</div>`;
+            `).join('');
 
             /* --- Outil detail overlay --- */
             const overlay = document.getElementById('outilOverlay');
             const detailContent = document.getElementById('outilDetailContent');
 
-            document.querySelectorAll('.outil-card').forEach(card => {
+            document.querySelectorAll('.outil-mini-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const outil = outils.find(o => o.id === card.dataset.outilId);
                     if (!outil) return;
