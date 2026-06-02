@@ -1729,3 +1729,325 @@ a {
 .competence-details li:not(.maitrise) {
     opacity: 0.5;
 }
+
+/* ========================================
+   THEME SECTIONS (Projets groupés)
+   ======================================== */
+.theme-section {
+    margin-bottom: 48px;
+}
+
+.theme-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.theme-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.theme-icon i {
+    color: var(--accent-gold);
+    font-size: 1.3rem;
+}
+
+.theme-info {
+    flex: 1;
+}
+
+.theme-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.theme-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.theme-count {
+    background: rgba(201, 168, 76, 0.1);
+    color: var(--accent-gold);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.theme-empty {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px dashed var(--border-subtle);
+    border-radius: var(--radius-md);
+}
+
+.theme-empty i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    opacity: 0.3;
+    display: block;
+}
+
+.theme-empty p {
+    font-size: 0.9rem;
+}
+
+.competences-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+/* ========================================
+   OUTIL DETAIL MODAL / PAGE
+   ======================================== */
+.outil-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.outil-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+.outil-card i {
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.outil-card span {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.outil-card .outil-niveau-mini {
+    display: block;
+    margin-top: 8px;
+}
+
+.outil-niveau-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.outil-niveau-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.outil-niveau-text {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+/* Outil detail overlay */
+.outil-detail-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.outil-detail-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.outil-detail-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outil-detail-close:hover {
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.outil-detail-icon {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 16px;
+}
+
+.outil-detail-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.outil-detail-categorie {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    color: var(--accent-gold);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.outil-detail-progress {
+    margin: 20px 0;
+}
+
+.outil-detail-progress .progress-bar {
+    height: 12px;
+    border-radius: 6px;
+}
+
+.outil-detail-progress .progress-fill {
+    height: 100%;
+    transition: width 1s ease;
+}
+
+.outil-detail-percent {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 8px;
+    display: block;
+}
+
+.outil-detail-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.outil-detail-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 16px;
+}
+
+/* Competence usage in projet detail */
+.competence-usage-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.competence-usage-card:hover {
+    border-color: var(--accent-gold);
+}
+
+.competence-usage-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.competence-usage-icon i {
+    color: var(--accent-gold);
+}
+
+.competence-usage-info {
+    flex: 1;
+}
+
+.competence-usage-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.competence-usage-info p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.competence-usage-niveau {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.competence-usage-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.competence-usage-badge.debutant {
+    background: rgba(249, 115, 22, 0.15);
+    color: #f97316;
+}
+
+.competence-usage-badge.intermediaire {
+    background: rgba(201, 168, 76, 0.15);
+    color: var(--accent-gold);
+}
+
+.competence-usage-badge.avance {
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+}

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjetForm();
     initParcoursForm();
     initCompetenceForm();
+    initOutilForm();
     initGlobalActions();
 });
 
@@ -34,6 +35,7 @@ function renderAll() {
     renderProjets(data.projets);
     renderParcours(data.parcours);
     renderCompetences(data.competences);
+    renderOutils(data.outils || []);
 }
 
 /* ========================================
@@ -54,7 +56,7 @@ function renderProjets(projets) {
             </div>
             <div class="admin-item-meta">
                 <span class="badge">${p.semestre}</span>
-                <span class="badge">${getCatLabel(p.categorie)}</span>
+                <span class="badge badge-theme">${getThemeLabel(p.theme || 'scolaire')}</span>
             </div>
             <div class="admin-item-actions">
                 <button onclick="editProjet(${i})" title="Modifier"><i class="fas fa-pen"></i></button>
@@ -64,9 +66,58 @@ function renderProjets(projets) {
     `).join('');
 }
 
-function getCatLabel(cat) {
-    const labels = { dev: 'Dev', reseau: 'Réseau', bdd: 'BDD', securite: 'Sécu', autre: 'Autre' };
-    return labels[cat] || cat;
+function buildCompetencesSelection(selected) {
+    const data = getData();
+    const container = document.getElementById('projetCompetencesContainer');
+    selected = selected || [];
+
+    container.innerHTML = data.competences.map(c => {
+        const existing = selected.find(s => s.competenceId === c.id);
+        const checked = existing ? 'checked' : '';
+        const niveau = existing ? existing.niveau : 'Intermédiaire';
+        const utilisation = existing ? existing.utilisation : '';
+
+        return `
+        <div class="comp-select-item">
+            <div class="comp-select-header">
+                <label class="comp-select-check">
+                    <input type="checkbox" data-comp-id="${c.id}" ${checked} onchange="toggleCompSelection(this)">
+                    <i class="fas ${c.icone}" style="color:var(--accent-gold);margin:0 8px;"></i>
+                    <strong>${c.nom}</strong>
+                </label>
+            </div>
+            <div class="comp-select-details" style="display:${existing ? 'flex' : 'none'}">
+                <select data-comp-niveau="${c.id}">
+                    <option value="Débutant" ${niveau === 'Débutant' ? 'selected' : ''}>Débutant</option>
+                    <option value="Intermédiaire" ${niveau === 'Intermédiaire' ? 'selected' : ''}>Intermédiaire</option>
+                    <option value="Avancé" ${niveau === 'Avancé' ? 'selected' : ''}>Avancé</option>
+                </select>
+                <input type="text" data-comp-util="${c.id}" value="${utilisation}" placeholder="Utilisation (ex: Développement frontend)">
+            </div>
+        </div>`;
+    }).join('');
+}
+
+window.toggleCompSelection = function(checkbox) {
+    const details = checkbox.closest('.comp-select-item').querySelector('.comp-select-details');
+    details.style.display = checkbox.checked ? 'flex' : 'none';
+};
+
+function getSelectedCompetences() {
+    const items = document.querySelectorAll('#projetCompetencesContainer .comp-select-item');
+    const result = [];
+    items.forEach(item => {
+        const cb = item.querySelector('input[type="checkbox"]');
+        if (cb.checked) {
+            const compId = cb.dataset.compId;
+            result.push({
+                competenceId: compId,
+                niveau: item.querySelector(`[data-comp-niveau="${compId}"]`).value,
+                utilisation: item.querySelector(`[data-comp-util="${compId}"]`).value
+            });
+        }
+    });
+    return result;
 }
 
 function initProjetForm() {
@@ -74,6 +125,7 @@ function initProjetForm() {
         document.getElementById('formProjetTitle').textContent = 'Ajouter un projet';
         document.getElementById('projetForm').reset();
         document.getElementById('projetId').value = '';
+        buildCompetencesSelection([]);
         document.getElementById('formProjet').style.display = 'flex';
     });
 
@@ -88,15 +140,15 @@ function initProjetForm() {
         e.preventDefault();
         const data = getData();
         const idx = document.getElementById('projetId').value;
-        
+
         const projet = {
-            id: generateId(document.getElementById('projetNom').value),
+            id: idx !== '' ? data.projets[parseInt(idx)].id : generateId(document.getElementById('projetNom').value),
             nom: document.getElementById('projetNom').value,
             semestre: document.getElementById('projetSemestre').value,
-            categorie: document.getElementById('projetCategorie').value,
+            theme: document.getElementById('projetTheme').value,
             description: document.getElementById('projetDescription').value,
             details: document.getElementById('projetDetails').value,
-            competences: document.getElementById('projetCompetences').value.split(',').map(s => s.trim()).filter(Boolean),
+            competencesUtilisees: getSelectedCompetences(),
             technologies: document.getElementById('projetTechnologies').value.split(',').map(s => s.trim()).filter(Boolean),
             icone: document.getElementById('projetIcone').value,
             lien: document.getElementById('projetLien').value,
@@ -125,15 +177,15 @@ window.editProjet = function(idx) {
     document.getElementById('projetId').value = idx;
     document.getElementById('projetNom').value = p.nom;
     document.getElementById('projetSemestre').value = p.semestre;
-    document.getElementById('projetCategorie').value = p.categorie;
+    document.getElementById('projetTheme').value = p.theme || 'scolaire';
     document.getElementById('projetDescription').value = p.description;
     document.getElementById('projetDetails').value = p.details || '';
-    document.getElementById('projetCompetences').value = (p.competences || []).join(', ');
     document.getElementById('projetTechnologies').value = (p.technologies || []).join(', ');
     document.getElementById('projetIcone').value = p.icone || 'fa-code';
     document.getElementById('projetLien').value = p.lien || '';
     document.getElementById('projetObjectifs').value = (p.objectifs || []).join('\n');
     document.getElementById('projetResultats').value = p.resultats || '';
+    buildCompetencesSelection(p.competencesUtilisees || []);
     document.getElementById('formProjet').style.display = 'flex';
 };
 
@@ -270,7 +322,7 @@ function renderCompetences(competences) {
             <div class="admin-item-icon"><i class="fas ${c.icone}"></i></div>
             <div class="admin-item-info">
                 <h4>${c.nom}</h4>
-                <p>${c.description}</p>
+                <p>${c.description} <span style="color:var(--accent-gold);font-size:0.8rem;">(${(c.apprentissages || []).length} apprentissages)</span></p>
             </div>
             <div class="admin-progress">
                 <div class="admin-progress-bar">
@@ -368,12 +420,114 @@ window.removeApprentissage = function(idx) {
 };
 
 /* ========================================
+   OUTILS
+   ======================================== */
+function renderOutils(outils) {
+    const list = document.getElementById('listOutils');
+    if (!outils.length) {
+        list.innerHTML = '<p style="color:var(--text-secondary);text-align:center;padding:40px;">Aucun outil. Cliquez sur "Ajouter un outil" pour commencer.</p>';
+        return;
+    }
+    list.innerHTML = outils.map((o, i) => `
+        <div class="admin-item">
+            <div class="admin-item-icon"><i class="${o.icone}"></i></div>
+            <div class="admin-item-info">
+                <h4>${o.nom}</h4>
+                <p>${o.description || o.categorie}</p>
+            </div>
+            <div class="admin-progress">
+                <div class="admin-progress-bar">
+                    <div class="admin-progress-fill" style="width:${o.niveau}%"></div>
+                </div>
+                <div class="admin-progress-text">${o.categorie} — ${o.niveau}%</div>
+            </div>
+            <div class="admin-item-actions">
+                <button onclick="editOutil(${i})" title="Modifier"><i class="fas fa-pen"></i></button>
+                <button class="btn-delete" onclick="deleteOutil(${i})" title="Supprimer"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function initOutilForm() {
+    document.getElementById('btnAddOutil').addEventListener('click', () => {
+        document.getElementById('formOutilTitle').textContent = 'Ajouter un outil';
+        document.getElementById('outilForm').reset();
+        document.getElementById('outilIdx').value = '';
+        document.getElementById('outilNiveauValue').textContent = '50%';
+        document.getElementById('formOutil').style.display = 'flex';
+    });
+
+    document.getElementById('closeFormOutil').addEventListener('click', () => {
+        document.getElementById('formOutil').style.display = 'none';
+    });
+    document.getElementById('cancelOutil').addEventListener('click', () => {
+        document.getElementById('formOutil').style.display = 'none';
+    });
+
+    document.getElementById('outilNiveau').addEventListener('input', (e) => {
+        document.getElementById('outilNiveauValue').textContent = e.target.value + '%';
+    });
+
+    document.getElementById('outilForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = getData();
+        if (!data.outils) data.outils = [];
+        const idx = document.getElementById('outilIdx').value;
+
+        const outil = {
+            id: idx !== '' ? data.outils[parseInt(idx)].id : generateId(document.getElementById('outilNom').value),
+            nom: document.getElementById('outilNom').value,
+            categorie: document.getElementById('outilCategorie').value,
+            icone: document.getElementById('outilIcone').value || 'fas fa-wrench',
+            niveau: parseInt(document.getElementById('outilNiveau').value),
+            description: document.getElementById('outilDescription').value
+        };
+
+        if (idx !== '') {
+            data.outils[parseInt(idx)] = outil;
+            showToast('Outil modifié !');
+        } else {
+            data.outils.push(outil);
+            showToast('Outil ajouté !');
+        }
+
+        saveData(data);
+        renderOutils(data.outils);
+        document.getElementById('formOutil').style.display = 'none';
+    });
+}
+
+window.editOutil = function(idx) {
+    const data = getData();
+    const o = data.outils[idx];
+    document.getElementById('formOutilTitle').textContent = 'Modifier l\'outil';
+    document.getElementById('outilIdx').value = idx;
+    document.getElementById('outilNom').value = o.nom;
+    document.getElementById('outilCategorie').value = o.categorie;
+    document.getElementById('outilIcone').value = o.icone;
+    document.getElementById('outilNiveau').value = o.niveau;
+    document.getElementById('outilNiveauValue').textContent = o.niveau + '%';
+    document.getElementById('outilDescription').value = o.description || '';
+    document.getElementById('formOutil').style.display = 'flex';
+};
+
+window.deleteOutil = function(idx) {
+    if (!confirm('Supprimer cet outil ?')) return;
+    const data = getData();
+    data.outils.splice(idx, 1);
+    saveData(data);
+    renderOutils(data.outils);
+    showToast('Outil supprimé');
+};
+
+/* ========================================
    GLOBAL ACTIONS
    ======================================== */
 function initGlobalActions() {
     document.getElementById('btnReset').addEventListener('click', () => {
         if (!confirm('Réinitialiser toutes les données aux valeurs par défaut ?')) return;
-        const data = resetData();
+        resetData();
         renderAll();
         showToast('Données réinitialisées');
     });

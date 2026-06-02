@@ -94,9 +94,26 @@
             document.title = projet.nom + ' | Flavio Athanase';
             document.getElementById('breadcrumbName').textContent = projet.nom;
 
-            const compLies = (projet.competences || [])
-                .map(name => data.competences.find(c => c.nom === name))
-                .filter(Boolean);
+            function getNiveauBadge(niveau) {
+                const cls = niveau === 'D\u00E9butant' ? 'debutant' : niveau === 'Avanc\u00E9' ? 'avance' : 'intermediaire';
+                return `<span class="competence-usage-badge ${cls}">${niveau}</span>`;
+            }
+
+            const compCards = (projet.competencesUtilisees || []).map(cu => {
+                const comp = getCompetenceById(data, cu.competenceId);
+                if (!comp) return '';
+                return `
+                    <a href="competence-detail.html?id=${comp.id}" class="competence-usage-card">
+                        <div class="competence-usage-icon"><i class="fas ${comp.icone}"></i></div>
+                        <div class="competence-usage-info">
+                            <h4>${comp.nom}</h4>
+                            <p>${cu.utilisation || comp.description}</p>
+                        </div>
+                        <div class="competence-usage-niveau">
+                            ${getNiveauBadge(cu.niveau)}
+                        </div>
+                    </a>`;
+            }).join('');
 
             document.getElementById('projetContent').innerHTML = `
                 <div class="detail-hero">
@@ -106,7 +123,7 @@
                     <div class="detail-hero-info">
                         <div class="detail-hero-badges">
                             <span class="badge-gold">${projet.semestre}</span>
-                            <span class="badge-outline">${getCatLabel(projet.categorie)}</span>
+                            <span class="badge-outline">${getThemeLabel(projet.theme)}</span>
                         </div>
                         <h1>${projet.nom}</h1>
                         <p class="detail-hero-subtitle">${projet.description}</p>
@@ -135,27 +152,13 @@
                     </div>
                 </div>
 
+                ${compCards ? `
                 <div class="detail-section">
                     <h2><i class="fas fa-chart-bar"></i> Comp\u00E9tences mobilis\u00E9es</h2>
-                    <div class="detail-competences-grid">
-                        ${compLies.map(c => `
-                            <a href="competence-detail.html?id=${c.id}" class="detail-competence-card">
-                                <div class="detail-competence-icon"><i class="fas ${c.icone}"></i></div>
-                                <h4>${c.nom}</h4>
-                                <div class="mini-progress">
-                                    <div class="mini-progress-fill" style="width:${c.progression}%"></div>
-                                </div>
-                                <span class="mini-progress-text">Niveau ${c.niveau} \u2014 ${c.progression}%</span>
-                            </a>
-                        `).join('')}
-                        ${(projet.competences || []).filter(name => !data.competences.find(c => c.nom === name)).map(name => `
-                            <div class="detail-competence-card">
-                                <div class="detail-competence-icon"><i class="fas fa-star"></i></div>
-                                <h4>${name}</h4>
-                            </div>
-                        `).join('')}
+                    <div class="detail-projects-grid">
+                        ${compCards}
                     </div>
-                </div>
+                </div>` : ''}
 
                 ${projet.resultats ? `
                 <div class="detail-section">
@@ -168,11 +171,6 @@
                 </div>
             `;
         });
-
-        function getCatLabel(cat) {
-            const labels = { dev: 'D\u00E9veloppement', reseau: 'R\u00E9seau', bdd: 'Base de donn\u00E9es', securite: 'S\u00E9curit\u00E9', autre: 'Autre' };
-            return labels[cat] || cat;
-        }
     </script>
     <script src="js/main.js"></script>
 </body>

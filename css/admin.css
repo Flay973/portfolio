@@ -479,3 +479,77 @@
         justify-content: flex-end;
     }
 }
+
+/* ========================================
+   COMPETENCES SELECTION (in projet form)
+   ======================================== */
+.competences-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.comp-select-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    transition: var(--transition);
+}
+
+.comp-select-item:has(input:checked) {
+    border-color: rgba(201, 168, 76, 0.4);
+}
+
+.comp-select-header {
+    display: flex;
+    align-items: center;
+}
+
+.comp-select-check {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.comp-select-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-gold);
+    cursor: pointer;
+}
+
+.comp-select-details {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+    flex-wrap: wrap;
+}
+
+.comp-select-details select {
+    flex: 0 0 150px;
+    padding: 6px 10px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+.comp-select-details input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 6px 10px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+.badge-theme {
+    background: rgba(201, 168, 76, 0.2) !important;
+}

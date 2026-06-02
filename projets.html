@@ -43,8 +43,7 @@
                 <h2 class="section-title">Projets</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="projects-filter" id="projectsFilter"></div>
-            <div class="projects-grid" id="projectsGrid"></div>
+            <div id="projetsContent"></div>
         </div>
     </section>
 
@@ -79,65 +78,67 @@
         document.addEventListener('DOMContentLoaded', () => {
             const data = getData();
             const projets = data.projets;
+            const container = document.getElementById('projetsContent');
 
-            // Build filters
-            const categories = [...new Set(projets.map(p => p.categorie))];
-            const catLabels = { dev: 'D\u00E9veloppement', reseau: 'R\u00E9seau', bdd: 'Base de donn\u00E9es', securite: 'S\u00E9curit\u00E9', autre: 'Autre' };
-            
-            let filterHTML = '<button class="filter-btn active" data-filter="all">Tous</button>';
-            categories.forEach(cat => {
-                filterHTML += `<button class="filter-btn" data-filter="${cat}">${catLabels[cat] || cat}</button>`;
-            });
-            document.getElementById('projectsFilter').innerHTML = filterHTML;
+            const themes = [
+                { id: 'scolaire', label: 'Scolaire', icon: 'fa-graduation-cap', description: 'Projets r\u00E9alis\u00E9s dans le cadre de ma formation (SA\u00C9, TP not\u00E9s, etc.)' },
+                { id: 'alternance', label: 'Alternance', icon: 'fa-building', description: 'Projets r\u00E9alis\u00E9s en entreprise dans le cadre de mon alternance' },
+                { id: 'stage', label: 'Stage', icon: 'fa-briefcase', description: 'Projets et missions effectu\u00E9s lors de mes stages' }
+            ];
 
-            // Build grid
-            document.getElementById('projectsGrid').innerHTML = projets.map(p => `
-                <div class="project-card" data-category="${p.categorie}">
-                    <a href="projet-detail.html?id=${p.id}" class="project-card-link">
-                        <div class="project-image">
-                            <div class="project-placeholder">
-                                <i class="fas ${p.icone}"></i>
-                            </div>
+            let html = '';
+
+            themes.forEach(theme => {
+                const themeProjects = projets.filter(p => p.theme === theme.id);
+                
+                html += `
+                <div class="theme-section">
+                    <div class="theme-header">
+                        <div class="theme-icon"><i class="fas ${theme.icon}"></i></div>
+                        <div class="theme-info">
+                            <h3>${theme.label}</h3>
+                            <p>${theme.description}</p>
                         </div>
-                        <div class="project-info">
-                            <div class="project-header">
-                                <h3>${p.nom}</h3>
-                                <span class="project-semester">${p.semestre}</span>
-                            </div>
-                            <p>${p.description}</p>
-                            <div class="project-competences">
-                                ${(p.competences || []).map(c => `<span class="competence-badge">${c}</span>`).join('')}
-                            </div>
-                            <div class="project-tech">
-                                ${(p.technologies || []).map(t => `<span>${t}</span>`).join('')}
-                            </div>
-                            <span class="project-detail-link">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </a>
-                </div>
-            `).join('');
+                        <span class="theme-count">${themeProjects.length} projet${themeProjects.length !== 1 ? 's' : ''}</span>
+                    </div>`;
 
-            // Init filter functionality
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const cards = document.querySelectorAll('.project-card');
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const filter = btn.dataset.filter;
-                    cards.forEach(card => {
-                        if (filter === 'all' || card.dataset.category === filter) {
-                            card.style.opacity = '1';
-                            card.style.transform = 'scale(1)';
-                            card.style.display = 'block';
-                        } else {
-                            card.style.opacity = '0';
-                            card.style.transform = 'scale(0.95)';
-                            setTimeout(() => card.style.display = 'none', 300);
-                        }
+                if (themeProjects.length === 0) {
+                    html += `<div class="theme-empty"><i class="fas fa-folder-open"></i><p>Aucun projet dans cette cat\u00E9gorie pour le moment.</p></div>`;
+                } else {
+                    html += `<div class="projects-grid">`;
+                    themeProjects.forEach(p => {
+                        const compBadges = (p.competencesUtilisees || []).map(cu => {
+                            const comp = getCompetenceById(data, cu.competenceId);
+                            return comp ? `<span class="competence-badge" title="${cu.niveau}">${comp.nom}</span>` : '';
+                        }).join('');
+
+                        html += `
+                        <div class="project-card">
+                            <a href="projet-detail.html?id=${p.id}" class="project-card-link">
+                                <div class="project-image">
+                                    <div class="project-placeholder"><i class="fas ${p.icone}"></i></div>
+                                </div>
+                                <div class="project-info">
+                                    <div class="project-header">
+                                        <h3>${p.nom}</h3>
+                                        <span class="project-semester">${p.semestre}</span>
+                                    </div>
+                                    <p>${p.description}</p>
+                                    <div class="project-competences">${compBadges}</div>
+                                    <div class="project-tech">
+                                        ${(p.technologies || []).map(t => `<span>${t}</span>`).join('')}
+                                    </div>
+                                    <span class="project-detail-link">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        </div>`;
                     });
-                });
+                    html += `</div>`;
+                }
+                html += `</div>`;
             });
+
+            container.innerHTML = html;
         });
     </script>
     <script src="js/main.js"></script>

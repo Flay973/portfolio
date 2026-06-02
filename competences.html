@@ -36,6 +36,7 @@
         </div>
     </div>
 
+    <!-- Comp&eacute;tences BUT -->
     <section class="section page-section section-dark">
         <div class="container">
             <div class="section-header">
@@ -48,9 +49,7 @@
                 avec les apprentissages critiques associ&eacute;s et mon niveau de progression.
                 <strong>Cliquez sur une comp&eacute;tence pour voir le d&eacute;tail.</strong>
             </p>
-
             <div class="competences-grid" id="competencesGrid"></div>
-
             <div class="competences-legend">
                 <h4>L&eacute;gende des niveaux</h4>
                 <div class="legend-items">
@@ -79,38 +78,18 @@
                 <h2 class="section-title">Outils & Technologies</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="tools-grid">
-                <div class="tool-category">
-                    <h3><i class="fas fa-terminal"></i> Langages</h3>
-                    <div class="tool-items">
-                        <div class="tool-item"><i class="fab fa-java"></i><span>Java</span></div>
-                        <div class="tool-item"><i class="fas fa-copyright"></i><span>C</span></div>
-                        <div class="tool-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-                        <div class="tool-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-                        <div class="tool-item"><i class="fas fa-database"></i><span>SQL</span></div>
-                    </div>
-                </div>
-                <div class="tool-category">
-                    <h3><i class="fas fa-tools"></i> Outils</h3>
-                    <div class="tool-items">
-                        <div class="tool-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
-                        <div class="tool-item"><i class="fas fa-network-wired"></i><span>Wireshark</span></div>
-                        <div class="tool-item"><i class="fas fa-desktop"></i><span>VMware</span></div>
-                        <div class="tool-item"><i class="fas fa-server"></i><span>Apache</span></div>
-                    </div>
-                </div>
-                <div class="tool-category">
-                    <h3><i class="fas fa-laptop"></i> Syst&egrave;mes</h3>
-                    <div class="tool-items">
-                        <div class="tool-item"><i class="fab fa-linux"></i><span>Linux</span></div>
-                        <div class="tool-item"><i class="fab fa-windows"></i><span>Windows</span></div>
-                        <div class="tool-item"><i class="fas fa-shield-alt"></i><span>Active Directory</span></div>
-                        <div class="tool-item"><i class="fas fa-project-diagram"></i><span>Cisco</span></div>
-                    </div>
-                </div>
-            </div>
+            <p class="competences-intro">Cliquez sur un outil pour voir mon niveau de ma&icirc;trise et les d&eacute;tails.</p>
+            <div id="outilsGrid"></div>
         </div>
     </section>
+
+    <!-- Outil detail overlay -->
+    <div id="outilOverlay" class="outil-detail-overlay" style="display:none;">
+        <div class="outil-detail-card">
+            <button class="outil-detail-close" id="outilClose"><i class="fas fa-times"></i></button>
+            <div id="outilDetailContent"></div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -142,12 +121,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const data = getData();
+
+            /* --- Competences grid --- */
             const grid = document.getElementById('competencesGrid');
-
             grid.innerHTML = data.competences.map(c => {
-                const maitrises = (c.apprentissages || []).filter(a => a.maitrise).length;
-                const total = (c.apprentissages || []).length;
-
                 return `
                 <a href="competence-detail.html?id=${c.id}" class="competence-card competence-card-link">
                     <div class="competence-icon"><i class="fas ${c.icone}"></i></div>
@@ -173,6 +150,77 @@
                     <span class="competence-detail-cta">Voir le d\u00E9tail <i class="fas fa-arrow-right"></i></span>
                 </a>`;
             }).join('');
+
+            /* --- Outils grid --- */
+            const outils = data.outils || [];
+            const categories = [...new Set(outils.map(o => o.categorie))];
+            const outilsGrid = document.getElementById('outilsGrid');
+
+            outilsGrid.innerHTML = `<div class="tools-grid">${categories.map(cat => `
+                <div class="tool-category">
+                    <h3><i class="fas ${cat === 'Langages' ? 'fa-terminal' : cat === 'Outils' ? 'fa-tools' : 'fa-laptop'}"></i> ${cat}</h3>
+                    <div class="tool-items">
+                        ${outils.filter(o => o.categorie === cat).map(o => `
+                            <div class="outil-card" data-outil-id="${o.id}">
+                                <i class="${o.icone}"></i>
+                                <span>${o.nom}</span>
+                                <div class="outil-niveau-mini">
+                                    <div class="outil-niveau-bar"><div class="outil-niveau-fill" style="width:${o.niveau}%"></div></div>
+                                    <span class="outil-niveau-text">${o.niveau}%</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('')}</div>`;
+
+            /* --- Outil detail overlay --- */
+            const overlay = document.getElementById('outilOverlay');
+            const detailContent = document.getElementById('outilDetailContent');
+
+            document.querySelectorAll('.outil-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const outil = outils.find(o => o.id === card.dataset.outilId);
+                    if (!outil) return;
+
+                    const projetsUtilisant = data.projets.filter(p =>
+                        (p.technologies || []).some(t => t.toLowerCase() === outil.nom.toLowerCase())
+                    );
+
+                    detailContent.innerHTML = `
+                        <div class="outil-detail-icon"><i class="${outil.icone}"></i></div>
+                        <h3>${outil.nom}</h3>
+                        <span class="outil-detail-categorie">${outil.categorie}</span>
+                        <div class="outil-detail-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width:${outil.niveau}%"></div>
+                            </div>
+                            <span class="outil-detail-percent">${outil.niveau}%</span>
+                            <span class="outil-detail-label">Niveau de ma\u00EEtrise</span>
+                        </div>
+                        <p class="outil-detail-desc">${outil.description}</p>
+                        ${projetsUtilisant.length ? `
+                            <div style="margin-top:20px;text-align:left;">
+                                <h4 style="font-size:0.9rem;margin-bottom:8px;color:var(--accent-gold);">Projets utilisant ${outil.nom}</h4>
+                                ${projetsUtilisant.map(p => `
+                                    <a href="projet-detail.html?id=${p.id}" style="display:block;padding:8px 12px;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:8px;margin-bottom:6px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s;">
+                                        <i class="fas ${p.icone}" style="color:var(--accent-gold);margin-right:8px;"></i>${p.nom}
+                                    </a>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    `;
+                    overlay.style.display = 'flex';
+                });
+            });
+
+            document.getElementById('outilClose').addEventListener('click', () => {
+                overlay.style.display = 'none';
+            });
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) overlay.style.display = 'none';
+            });
         });
     </script>
     <script src="js/main.js"></script>

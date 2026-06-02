@@ -14,7 +14,6 @@
 <body>
     <div class="cursor-glow" id="cursorGlow"></div>
 
-    <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo"><span class="logo-text">FA</span></a>
@@ -30,7 +29,6 @@
         </div>
     </nav>
 
-    <!-- Breadcrumb -->
     <div class="breadcrumb visible">
         <div class="breadcrumb-container">
             <a href="index.html"><i class="fas fa-home"></i></a>
@@ -39,7 +37,6 @@
         </div>
     </div>
 
-    <!-- Admin Panel -->
     <section class="section page-section">
         <div class="container">
             <div class="section-header">
@@ -48,11 +45,11 @@
                 <div class="section-line"></div>
             </div>
 
-            <!-- Admin Tabs -->
             <div class="admin-tabs">
                 <button class="admin-tab active" data-tab="projets"><i class="fas fa-code"></i> Projets</button>
                 <button class="admin-tab" data-tab="parcours"><i class="fas fa-road"></i> Parcours</button>
                 <button class="admin-tab" data-tab="competences"><i class="fas fa-chart-bar"></i> Comp&eacute;tences</button>
+                <button class="admin-tab" data-tab="outils"><i class="fas fa-tools"></i> Outils</button>
             </div>
 
             <!-- PROJETS TAB -->
@@ -63,7 +60,6 @@
                 </div>
                 <div class="admin-list" id="listProjets"></div>
 
-                <!-- Formulaire projet -->
                 <div class="admin-form-overlay" id="formProjet" style="display:none;">
                     <div class="admin-form-container">
                         <div class="admin-form-header">
@@ -84,21 +80,19 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Cat&eacute;gorie *</label>
-                                    <select id="projetCategorie" required>
-                                        <option value="dev">D&eacute;veloppement</option>
-                                        <option value="reseau">R&eacute;seau</option>
-                                        <option value="bdd">Base de donn&eacute;es</option>
-                                        <option value="securite">S&eacute;curit&eacute;</option>
-                                        <option value="autre">Autre</option>
+                                    <label>Th&egrave;me *</label>
+                                    <select id="projetTheme" required>
+                                        <option value="scolaire">Scolaire</option>
+                                        <option value="alternance">Alternance</option>
+                                        <option value="stage">Stage</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Ic&ocirc;ne</label>
                                     <select id="projetIcone">
-                                        <option value="fa-code">Code &lt;/&gt;</option>
+                                        <option value="fa-code">Code</option>
                                         <option value="fa-network-wired">R&eacute;seau</option>
-                                        <option value="fa-database">Base de donn&eacute;es</option>
+                                        <option value="fa-database">BDD</option>
                                         <option value="fa-laptop-code">Laptop</option>
                                         <option value="fa-shield-alt">S&eacute;curit&eacute;</option>
                                         <option value="fa-server">Serveur</option>
@@ -114,17 +108,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Description d&eacute;taill&eacute;e</label>
-                                <textarea id="projetDetails" rows="4" placeholder="Description compl&egrave;te du projet, contexte, m&eacute;thodologie..."></textarea>
+                                <textarea id="projetDetails" rows="4" placeholder="Description compl&egrave;te du projet..."></textarea>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Comp&eacute;tences (s&eacute;par&eacute;es par des virgules)</label>
-                                    <input type="text" id="projetCompetences" placeholder="Ex: R&eacute;aliser, Conduire, Collaborer">
-                                </div>
-                                <div class="form-group">
-                                    <label>Technologies (s&eacute;par&eacute;es par des virgules)</label>
-                                    <input type="text" id="projetTechnologies" placeholder="Ex: Java, HTML/CSS, Git">
-                                </div>
+                            <div class="form-group">
+                                <label>Technologies (s&eacute;par&eacute;es par des virgules)</label>
+                                <input type="text" id="projetTechnologies" placeholder="Ex: Java, HTML/CSS, Git">
                             </div>
                             <div class="form-group">
                                 <label>Lien du projet (optionnel)</label>
@@ -132,12 +120,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Objectifs (un par ligne)</label>
-                                <textarea id="projetObjectifs" rows="3" placeholder="Analyser le cahier des charges&#10;D&eacute;velopper l'interface&#10;Tester le produit"></textarea>
+                                <textarea id="projetObjectifs" rows="3" placeholder="Analyser le cahier des charges&#10;D&eacute;velopper l'interface"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>R&eacute;sultats obtenus</label>
-                                <textarea id="projetResultats" rows="2" placeholder="Ce qui a &eacute;t&eacute; accompli, retours re&ccedil;us..."></textarea>
+                                <textarea id="projetResultats" rows="2" placeholder="Ce qui a &eacute;t&eacute; accompli..."></textarea>
                             </div>
+
+                            <!-- Comp&eacute;tences utilis&eacute;es -->
+                            <div class="form-group">
+                                <label>Comp&eacute;tences utilis&eacute;es</label>
+                                <div id="projetCompetencesContainer" class="competences-selection"></div>
+                            </div>
+
                             <div class="form-actions">
                                 <button type="button" class="btn btn-outline btn-sm" id="cancelProjet">Annuler</button>
                                 <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
@@ -155,7 +150,6 @@
                 </div>
                 <div class="admin-list" id="listParcours"></div>
 
-                <!-- Formulaire parcours -->
                 <div class="admin-form-overlay" id="formParcours" style="display:none;">
                     <div class="admin-form-container">
                         <div class="admin-form-header">
@@ -211,7 +205,6 @@
                 </div>
                 <div class="admin-list" id="listCompetences"></div>
 
-                <!-- Formulaire competence -->
                 <div class="admin-form-overlay" id="formCompetence" style="display:none;">
                     <div class="admin-form-container">
                         <div class="admin-form-header">
@@ -237,7 +230,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Description d&eacute;taill&eacute;e</label>
-                                <textarea id="competenceDetails" rows="3" placeholder="D&eacute;taillez votre niveau dans cette comp&eacute;tence..."></textarea>
+                                <textarea id="competenceDetails" rows="3" placeholder="D&eacute;taillez votre niveau..."></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Apprentissages critiques</label>
@@ -256,9 +249,63 @@
                 </div>
             </div>
 
+            <!-- OUTILS TAB -->
+            <div class="admin-panel" id="panel-outils" style="display:none;">
+                <div class="admin-header">
+                    <h3>Outils & Technologies</h3>
+                    <button class="btn btn-primary btn-sm" id="btnAddOutil"><i class="fas fa-plus"></i> Ajouter un outil</button>
+                </div>
+                <div class="admin-list" id="listOutils"></div>
+
+                <div class="admin-form-overlay" id="formOutil" style="display:none;">
+                    <div class="admin-form-container">
+                        <div class="admin-form-header">
+                            <h3 id="formOutilTitle">Ajouter un outil</h3>
+                            <button class="admin-form-close" id="closeFormOutil"><i class="fas fa-times"></i></button>
+                        </div>
+                        <form id="outilForm">
+                            <input type="hidden" id="outilIdx" value="">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nom de l'outil *</label>
+                                    <input type="text" id="outilNom" required placeholder="Ex: Docker">
+                                </div>
+                                <div class="form-group">
+                                    <label>Cat&eacute;gorie *</label>
+                                    <select id="outilCategorie" required>
+                                        <option value="Langages">Langages</option>
+                                        <option value="Outils">Outils</option>
+                                        <option value="Syst&egrave;mes">Syst&egrave;mes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ic&ocirc;ne FontAwesome</label>
+                                    <input type="text" id="outilIcone" placeholder="Ex: fab fa-docker">
+                                </div>
+                                <div class="form-group">
+                                    <label>Niveau de ma&icirc;trise (%)</label>
+                                    <input type="range" id="outilNiveau" min="0" max="100" value="50">
+                                    <span class="range-value" id="outilNiveauValue">50%</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="outilDescription" rows="2" placeholder="D&eacute;crivez votre exp&eacute;rience avec cet outil..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline btn-sm" id="cancelOutil">Annuler</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <!-- Actions globales -->
             <div class="admin-global-actions">
-                <button class="btn btn-outline btn-sm" id="btnReset"><i class="fas fa-undo"></i> R&eacute;initialiser les donn&eacute;es</button>
+                <button class="btn btn-outline btn-sm" id="btnReset"><i class="fas fa-undo"></i> R&eacute;initialiser</button>
                 <button class="btn btn-outline btn-sm" id="btnExport"><i class="fas fa-download"></i> Exporter (JSON)</button>
                 <button class="btn btn-outline btn-sm" id="btnImport"><i class="fas fa-upload"></i> Importer (JSON)</button>
                 <input type="file" id="importFile" accept=".json" style="display:none;">
@@ -266,7 +313,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
