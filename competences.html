@@ -75,8 +75,8 @@
                 <h2 class="section-title">Outils & Technologies</h2>
                 <div class="section-line"></div>
             </div>
-            <p class="competences-intro">Cliquez sur un outil pour voir mon niveau de ma&icirc;trise.</p>
-            <div class="outils-minimal-grid" id="outilsGrid"></div>
+            <p class="competences-intro">Cliquez sur un outil pour voir mon niveau de ma&icirc;trise et les d&eacute;tails.</p>
+            <div class="outils-columns" id="outilsGrid"></div>
         </div>
     </section>
 
@@ -153,31 +153,35 @@
                 </a>`;
             }).join('');
 
-            /* --- Outils grid (grouped by category) --- */
+            /* --- Outils grid (3 category columns) --- */
             const outils = data.outils || [];
-            const categories = [...new Set(outils.map(o => o.categorie))];
-            const catIcons = { 'Langages': 'fa-terminal', 'Outils': 'fa-tools', 'Systèmes': 'fa-laptop' };
+            const categoriesOrder = ['Langages', 'Outils', 'Syst\u00E8mes'];
+            const catIcons = { 'Langages': 'fa-terminal', 'Outils': 'fa-tools', 'Syst\u00E8mes': 'fa-laptop' };
             const outilsGrid = document.getElementById('outilsGrid');
 
-            outilsGrid.innerHTML = categories.map(cat => `
-                <div class="outils-category">
-                    <h3 class="outils-category-title"><i class="fas ${catIcons[cat] || 'fa-cog'}"></i> ${cat}</h3>
-                    <div class="outils-category-grid">
-                        ${outils.filter(o => o.categorie === cat).map(o => `
-                            <div class="outil-mini-card" data-outil-id="${o.id}">
+            outilsGrid.innerHTML = categoriesOrder.map(cat => {
+                const items = outils.filter(o => o.categorie === cat);
+                if (!items.length) return '';
+                return `
+                <div class="outils-col-card">
+                    <h3 class="outils-col-title"><i class="fas ${catIcons[cat] || 'fa-cog'}"></i> ${cat}</h3>
+                    <div class="outils-col-items">
+                        ${items.map(o => `
+                            <div class="outil-col-item" data-outil-id="${o.id}">
                                 <i class="${o.icone}"></i>
-                                <span>${o.nom}</span>
+                                <span class="outil-col-name">${o.nom}</span>
+                                <span class="outil-col-percent">${o.niveau}%</span>
                             </div>
                         `).join('')}
                     </div>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
 
             /* --- Outil detail overlay --- */
             const overlay = document.getElementById('outilOverlay');
             const detailContent = document.getElementById('outilDetailContent');
 
-            document.querySelectorAll('.outil-mini-card').forEach(card => {
+            document.querySelectorAll('.outil-col-item').forEach(card => {
                 card.addEventListener('click', () => {
                     const outil = outils.find(o => o.id === card.dataset.outilId);
                     if (!outil) return;

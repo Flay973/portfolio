@@ -2191,41 +2191,45 @@ a {
     }
 }
 
-/* Outils - minimal style (logo + name only, grouped by category) */
-.outils-minimal-grid {
-    max-width: 800px;
-    margin: 0 auto;
+/* Outils - 3 column cards layout */
+.outils-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
-.outils-category {
-    margin-bottom: 32px;
+.outils-col-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
 }
 
-.outils-category-title {
+.outils-col-title {
     font-family: var(--font-display);
-    font-size: 1.1rem;
-    margin-bottom: 16px;
+    font-size: 1.15rem;
     color: var(--accent-gold);
+    margin-bottom: 20px;
 }
 
-.outils-category-title i {
+.outils-col-title i {
     margin-right: 8px;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
-.outils-category-grid {
+.outils-col-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     gap: 16px;
 }
 
-.outil-mini-card {
+.outil-col-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    padding: 20px 12px;
-    background: var(--bg-card);
+    gap: 6px;
+    padding: 16px 8px;
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -2233,19 +2237,33 @@ a {
     text-align: center;
 }
 
-.outil-mini-card:hover {
+.outil-col-item:hover {
     border-color: var(--accent-gold);
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(201, 168, 76, 0.08);
 }
 
-.outil-mini-card i {
+.outil-col-item i {
     font-size: 2rem;
     color: var(--accent-gold);
 }
 
-.outil-mini-card span {
-    font-size: 0.8rem;
+.outil-col-name {
+    font-size: 0.82rem;
     font-weight: 500;
     color: var(--text-primary);
+}
+
+.outil-col-percent {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+    .outils-columns {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 }
