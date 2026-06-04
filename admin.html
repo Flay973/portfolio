@@ -37,7 +37,23 @@
         </div>
     </div>
 
-    <section class="section page-section">
+    <!-- Login overlay -->
+    <div id="adminLogin" class="admin-login-overlay">
+        <div class="admin-login-card">
+            <div class="admin-login-icon"><i class="fas fa-lock"></i></div>
+            <h2>Administration</h2>
+            <p>Entrez le mot de passe pour acc&eacute;der au panneau de gestion.</p>
+            <form id="loginForm" onsubmit="return false;">
+                <div class="admin-login-field">
+                    <input type="password" id="adminPassword" placeholder="Mot de passe" autocomplete="current-password">
+                    <button type="submit" id="loginBtn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <p id="loginError" class="admin-login-error" style="display:none;">Mot de passe incorrect</p>
+            </form>
+        </div>
+    </div>
+
+    <section class="section page-section" id="adminContent" style="display:none;">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Panneau de gestion</span>
@@ -340,6 +356,48 @@
     </footer>
 
     <script src="js/data.js"></script>
+    <script>
+        (function() {
+            const ADMIN_HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+            const SESSION_KEY = 'portfolio_admin_auth';
+
+            async function hashPassword(pwd) {
+                const data = new TextEncoder().encode(pwd);
+                const buf = await crypto.subtle.digest('SHA-256', data);
+                return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+
+            function unlock() {
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminContent').style.display = '';
+                sessionStorage.setItem(SESSION_KEY, '1');
+            }
+
+            if (sessionStorage.getItem(SESSION_KEY) === '1') {
+                unlock();
+            }
+
+            document.getElementById('loginForm').addEventListener('submit', async () => {
+                const pwd = document.getElementById('adminPassword').value;
+                const hash = await hashPassword(pwd);
+                if (hash === ADMIN_HASH) {
+                    unlock();
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                    document.getElementById('adminPassword').value = '';
+                    document.getElementById('adminPassword').focus();
+                }
+            });
+
+            document.getElementById('loginBtn').addEventListener('click', () => {
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            });
+
+            document.getElementById('adminPassword').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            });
+        })();
+    </script>
     <script src="js/admin.js"></script>
     <script src="js/main.js"></script>
 </body>
