@@ -652,3 +652,27 @@
     font-size: 0.8rem;
     margin-top: 12px;
 }
+
+/* Publish hint */
+.admin-publish-hint {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-top: 12px;
+    line-height: 1.5;
+    padding: 12px 16px;
+    background: rgba(201, 168, 76, 0.06);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: var(--radius-md);
+}
+
+.admin-publish-hint i {
+    color: var(--accent-gold);
+    margin-right: 4px;
+}
+
+.admin-publish-hint code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}

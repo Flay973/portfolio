@@ -532,6 +532,76 @@ function initGlobalActions() {
         showToast('Données réinitialisées');
     });
 
+    document.getElementById('btnPublish').addEventListener('click', () => {
+        const data = getData();
+        const header = '/* ========================================\n   DATA MANAGEMENT - localStorage\n   ======================================== */\n\n';
+        const jsonStr = JSON.stringify(data, null, 4);
+        const funcs = `
+
+function getData() {
+    const stored = localStorage.getItem('portfolio_data');
+    if (stored) {
+        const data = JSON.parse(stored);
+        if (!data.outils) data.outils = DEFAULT_DATA.outils;
+        if (data.projets && data.projets.length > 0 && !data.projets[0].theme) {
+            data.projets = data.projets.map(p => ({
+                ...p,
+                theme: p.theme || 'scolaire',
+                competencesUtilisees: p.competencesUtilisees || (p.competences || []).map(c => ({
+                    competenceId: c.toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, ''),
+                    niveau: 'Intermédiaire',
+                    utilisation: ''
+                }))
+            }));
+        }
+        return data;
+    }
+    return DEFAULT_DATA;
+}
+
+function saveData(data) {
+    localStorage.setItem('portfolio_data', JSON.stringify(data));
+}
+
+function resetData() {
+    localStorage.removeItem('portfolio_data');
+    return DEFAULT_DATA;
+}
+
+function generateId(text) {
+    return text.toLowerCase()
+        .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+}
+
+function getCompetenceById(data, id) {
+    return data.competences.find(c => c.id === id);
+}
+
+function getThemeLabel(theme) {
+    const labels = { scolaire: 'Scolaire', alternance: 'Alternance', stage: 'Stage' };
+    return labels[theme] || theme;
+}
+
+function getNiveauColor(niveau) {
+    if (niveau >= 70) return '#4ade80';
+    if (niveau >= 40) return '#c9a84c';
+    return '#f97316';
+}
+`;
+        const content = header + 'const DEFAULT_DATA = ' + jsonStr + ';\n' + funcs;
+        const blob = new Blob([content], { type: 'application/javascript' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.js';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('Fichier data.js téléchargé ! Remplacez-le dans votre dépôt GitHub (dossier js/).');
+    });
+
     document.getElementById('btnExport').addEventListener('click', () => {
         const data = getData();
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });

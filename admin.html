@@ -321,11 +321,13 @@
 
             <!-- Actions globales -->
             <div class="admin-global-actions">
+                <button class="btn btn-primary btn-sm" id="btnPublish"><i class="fas fa-cloud-upload-alt"></i> Publier les modifications</button>
                 <button class="btn btn-outline btn-sm" id="btnReset"><i class="fas fa-undo"></i> R&eacute;initialiser</button>
                 <button class="btn btn-outline btn-sm" id="btnExport"><i class="fas fa-download"></i> Exporter (JSON)</button>
                 <button class="btn btn-outline btn-sm" id="btnImport"><i class="fas fa-upload"></i> Importer (JSON)</button>
                 <input type="file" id="importFile" accept=".json" style="display:none;">
             </div>
+            <p class="admin-publish-hint"><i class="fas fa-info-circle"></i> Apr&egrave;s avoir modifi&eacute; vos donn&eacute;es, cliquez sur <strong>&laquo; Publier les modifications &raquo;</strong> pour t&eacute;l&eacute;charger le fichier <code>data.js</code> mis &agrave; jour, puis remplacez-le dans votre d&eacute;p&ocirc;t GitHub pour que les changements soient visibles par tous.</p>
         </div>
     </section>
 
