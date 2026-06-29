@@ -2,7 +2,14 @@
    PORTFOLIO - Main JavaScript
    ======================================== */
 
+/* Theme toggle — runs before DOMContentLoaded to avoid flash */
+(function() {
+    var saved = localStorage.getItem('portfolio_theme');
+    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
     initNavigation();
     initScrollReveal();
     initProgressBars();
@@ -11,6 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
     initCursorGlow();
     initContactForm();
 });
+
+/* ========================================
+   THEME TOGGLE
+   ======================================== */
+function initThemeToggle() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        if (next === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('portfolio_theme', next);
+    });
+}
 
 /* ========================================
    NAVIGATION
